@@ -8,19 +8,55 @@
                 <h3>Data Akun Pengguna</h3>
                 </br>
 
+                {{-- Alert for success feedback from backend --}}
+                @if (session()->has('success'))
+                    <div class="alert alert-primary shadow-lg alert-dismissible fade show" role="alert"">
+                        <i class="fe fe-check-circle"></i>
+                        <span>
+                            {{ session('success') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </span>
+                    </div>
+                @endif
+
+                {{-- Alert for failed or errors feedback from backend --}}
+                @if (session()->has('error'))
+                    <div class="alert alert-danger shadow-lg alert-dismissible fade show" role="alert"">
+                        <i class="fe fe-x-circle"></i>
+                        <span>
+                            {{ session('error') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </span>
+                    </div>
+                @endif
+
                 {{-- Form First and Lastname --}}
                 <div class="form-row">
                     {{-- Input Firstname --}}
                     <div class="form-group col-md-6">
                         <label for="inputFirstname">Nama Depan</label>
-                        <input type="text" id="inputFirstname" class="form-control" value="{{ $login['username'] }}"
-                            required>
+                        <input type="text" wire:model.defer="usernameLogin" id="inputFirstname" class="form-control"
+                            value="{{ $usernameLogin }}" required>
+
+                        @error('inputFirstname')
+                            <span class="error">{{ $message }}</span>
+                        @enderror
+
                     </div>
 
                     {{-- Input Lastname --}}
                     <div class="form-group col-md-6">
                         <label for="inputLastname">Nama Belakang</label>
-                        <input type="text" id="inputLastname" class="form-control">
+                        <input type="text" wire:model.defer="inputLastname" id="inputLastname" class="form-control">
+
+                        @error('inputLastname')
+                            <span class="error">{{ $message }}</span>
+                        @enderror
+
                     </div>
                 </div>
 
@@ -30,13 +66,18 @@
                     <div class="form-group col-md-6">
                         <label for="inputEmail">Surat Elektronik</label>
                         <input type="email" class="form-control" id="inputEmail" @disabled(true)
-                            value="{{ $login['email'] }}">
+                            value="{{ $emailLogin }}">
                     </div>
 
                     {{-- Input Confirm Password --}}
                     <div class="form-group col-md-6">
                         <label for="currentPassword">Kata sandi saat ini</label>
-                        <input type="password" class="form-control" id="currentPassword" required>
+                        <input type="password" wire:model.defer="currentPassword" class="form-control"
+                            id="currentPassword" required>
+                        @error('currentPassword')
+                            <span class="error">{{ $message }}</span>
+                        @enderror
+
                     </div>
                 </div>
 
@@ -53,19 +94,42 @@
                 <h3>Ubah Kata Sandi</h3>
                 </br>
 
-                @if (session()->has('success'))
-                    <div class="alert alert-primary shadow-lg">
+                {{-- Alert for success feedback from backend --}}
+                @if (session()->has('successPassword'))
+                    <div class="alert alert-primary shadow-lg alert-dismissible fade show" role="alert"">
                         <i class="fe fe-check-circle"></i>
-                        <span>{{ session('success') }}</span>
+                        <span>
+                            {{ session('success') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </span>
                     </div>
                 @endif
 
-                @if (session()->has('error'))
-                    <div class="alert alert-danger shadow-lg">
-                        <div>
-                            <i class="fe fe-x-circle"></i>
-                            <span>{{ session('error') }}</span>
-                        </div>
+                {{-- Alert for warning feedback from backend --}}
+                @if (session()->has('warningPassword'))
+                    <div class="alert alert-warning shadow-lg alert-dismissible fade show" role="alert"">
+                        <i class="fe fe-x-circle"></i>
+                        <span>
+                            {{ session('warning') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </span>
+                    </div>
+                @endif
+
+                {{-- Alert for error feedback from backend --}}
+                @if (session()->has('errorPassword'))
+                    <div class="alert alert-danger shadow-lg alert-dismissible fade show" role="alert"">
+                        <i class="fe fe-x-circle"></i>
+                        <span>
+                            {{ session('error') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </span>
                     </div>
                 @endif
 
@@ -101,6 +165,10 @@
                                     wire:model.defer="inputConfirmPassword" required>
                             </div>
 
+                            @error('inputNewPassword')
+                                <span class="error">{{ $message }}</span>
+                            @enderror
+
                             @error('inputConfirmPassword')
                                 <span class="error">{{ $message }}</span>
                             @enderror
@@ -127,7 +195,6 @@
             </div>
         </div>
     </form>
-
     {{-- END OF Change Password Area --}}
 </div>
 </div>
