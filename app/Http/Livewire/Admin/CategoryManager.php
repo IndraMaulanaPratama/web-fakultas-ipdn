@@ -9,7 +9,7 @@ class CategoryManager extends Component
     public function render()
     {
         $params = [
-          'title' => 'Daftar KAtegori - IPDN Kampus Papua',
+          'title' => 'Daftar KAtegori - IPDN Kampus Daerah',
           'page_name' => 'Daftar Kategori',
     ];
 

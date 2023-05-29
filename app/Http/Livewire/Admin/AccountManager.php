@@ -111,7 +111,7 @@ class AccountManager extends Component
     public function render()
     {
         $params = [
-            'title' => 'Pengaturan Akun - IPDN Kampus Papua',
+            'title' => 'Pengaturan Akun - IPDN Kampus Daerah',
             'page_name' => 'Pengaturan Akun',
         ];
 

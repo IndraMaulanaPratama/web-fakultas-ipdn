@@ -10,7 +10,7 @@ class Dashboard extends Component
     public function render()
     {
         $params = [
-            'title' => 'Dashboard - IPDN Kampus Papua',
+            'title' => 'Dashboard - IPDN Kampus Daerah',
             'page_name' => 'Dashboard',
         ];
 
