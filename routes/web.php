@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Livewire\Admin\AccountManager;
+use App\Http\Livewire\Admin\CategoryManager;
 use App\Http\Livewire\Admin\Dashboard;
 use App\Http\Livewire\Category\ListBerita as CategoryListBerita;
 use App\Http\Livewire\Category\ListCategory;
@@ -54,6 +55,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     // Dashboard With Template
     Route::get('/home', Dashboard::class)->name('home');
     Route::get('/account-manager', AccountManager::class)->name('account-manager');
+    Route::get('/kategori', CategoryManager::class)->name('category-manager');
 
 });
 
