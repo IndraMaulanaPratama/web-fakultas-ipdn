@@ -15,7 +15,7 @@ class SubmenuSeeder extends Seeder
     {
         submenu::insert([
 
-          // Postingan Area //
+          /** Postingan Area */
           // Postingan -> Buat Postingan
           [
             'SUBMENU_MENU' => 1,
@@ -60,7 +60,8 @@ class SubmenuSeeder extends Seeder
             'SUBMENU_CREATED_BY' => 1,
           ],
 
-          // Pengguna Area //
+
+          /** Pengguna Area */
           // Pengguna -> Daftar Pengguna
           [
             'SUBMENU_MENU' => 2,
@@ -83,7 +84,20 @@ class SubmenuSeeder extends Seeder
             'SUBMENU_CREATED_BY' => 1,
           ],
 
-          // Setting Area //
+          /** Menu Area */
+          // Menu -> Daftar Menu
+          [
+            'SUBMENU_MENU' => 3,
+            'SUBMENU_ORDER' => 1,
+            'SUBMENU_NAME' => 'Daftar Menu',
+            'SUBMENU_URL' => 'menu',
+
+            'SUBMENU_CREATED_AT' => Carbon::now('Asia/Jakarta'),
+            'SUBMENU_CREATED_BY' => 1,
+          ],
+
+
+          /** Setting Area */
           // Setting -> Testimoni
           [
             'SUBMENU_MENU' => 4,

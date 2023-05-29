@@ -8,10 +8,10 @@ use Illuminate\Support\Carbon;
 
 class AccessLevelSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
-    public function run(): void
+
+  // TODO:: Module Access Level ini belum sepenuhnya stable, masih ada kostumisasi pada bagian logic livewire sidebarnavigation.php
+
+  public function run(): void
     {
         access_level::insert([
             /** SUPER ADMIN AREA */
@@ -19,8 +19,8 @@ class AccessLevelSeeder extends Seeder
             [
               'ACCESS_ROLE' => 1,
               'ACCESS_NAME' => 'Menu Postingan Super Admin',
-              'ACCESS_MENU' => '1,2,3,4',
-              'ACCESS_SUBMENU' => '1,2,3,4',
+              'ACCESS_MENU' => '1',
+              'ACCESS_SUBMENU' => '1',
 
               'ACCESS_READ' => true,
               'ACCESS_DETAIL' => true,
@@ -45,8 +45,8 @@ class AccessLevelSeeder extends Seeder
             [
               'ACCESS_ROLE' => 1,
               'ACCESS_NAME' => 'Menu Postingan Super Admin',
-              'ACCESS_MENU' => '1,2,3',
-              'ACCESS_SUBMENU' => '1,2,3,4',
+              'ACCESS_MENU' => '1',
+              'ACCESS_SUBMENU' => '1',
 
               'ACCESS_READ' => true,
               'ACCESS_DETAIL' => true,

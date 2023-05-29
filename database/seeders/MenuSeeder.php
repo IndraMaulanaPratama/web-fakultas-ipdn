@@ -19,7 +19,7 @@ class MenuSeeder extends Seeder
             'MENU_ORDER' => 1,
             'MENU_NAME' => 'Postingan',
             'MENU_URL' => 'postingan',
-            'MENU_ICON' => 'fa fe-trello',
+            'MENU_ICON' => 'fe fe-trello',
 
             'MENU_CREATED_AT' => Carbon::now('Asia/Jakarta'),
             'MENU_CREATED_BY' => 1,
