@@ -42,7 +42,7 @@
                         <ul class="collapse list-unstyled pl-4 w-100" id="{{ $item->MENU_NAME }}">
                             @foreach ($item->submenu as $submenu)
                                 <li class="nav-item">
-                                    <a class="nav-link pl-3" href="./dashboard-analytics.html"><span
+                                    <a class="nav-link pl-3" href="{{ url($submenu->SUBMENU_URL) }}"><span
                                             class="ml-1 item-text"> {{ $submenu->SUBMENU_NAME }} </span></a>
                                 </li>
                             @endforeach
