@@ -17,7 +17,7 @@ class CategoryManager extends Component
         $this->login = Auth::user();
     }
 
-    public function AddNewCategory()
+    public function AddNew()
     {
 
         // Validasi Data Mandatory
@@ -51,14 +51,29 @@ class CategoryManager extends Component
 
     }
 
+    public function SoftDelete($id)
+    {
+        $category = category::find($id);
+        $category->CATEGORY_DELETED_AT = Carbon::now('Asia/Jakarta');
+        $category->CATEGORY_DELETED_BY = $this->login->id;
+        $category->save();
+    }
+
     public function render()
     {
+        $category = category::with('user')->NullDeleted()->get([
+          'CATEGORY_ID AS ID',
+          'CATEGORY_NAME AS NAME',
+          'CATEGORY_CREATED_AT AS CREATED_DATE',
+          'CATEGORY_CREATED_BY'
+        ]);
+
         $params = [
           'title' => 'Daftar KAtegori - IPDN Kampus Daerah',
           'page_name' => 'Daftar Kategori',
-    ];
+        ];
 
-        return view('livewire.admin.category-manager')
+        return view('livewire.admin.category-manager', ['data' => $category])
         ->extends('layouts.admin', $params)
         ->section('content');
     }
