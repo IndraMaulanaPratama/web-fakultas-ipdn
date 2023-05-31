@@ -278,6 +278,9 @@
     </script>
     {{-- END OF SCRIPT AREA --}}
 
+    {{-- Tempat Inject Javascript dati content --}}
+    @stack('script')
+
     {{-- Livewire Script --}}
     @livewireScripts
 
