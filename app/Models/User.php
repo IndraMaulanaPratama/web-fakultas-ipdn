@@ -5,6 +5,8 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOneOrMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -54,11 +56,15 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    /**
-     * Relation Area
-     */
+    /** Relation to Role */
     public function role(): BelongsTo
     {
         return $this->belongsTo(role::class, 'role');
+    }
+
+    /** Relation to User */
+    public function category(): HasMany
+    {
+      return $this->hasMany(category::class, 'CATEGORY_CREATED_BY');
     }
 }
