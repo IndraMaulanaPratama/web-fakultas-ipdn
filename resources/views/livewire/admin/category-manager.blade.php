@@ -28,18 +28,66 @@
     @endif
 
     <div class="row">
+
+        {{-- Data Table Category --}}
+        <div class="col-md-8 mb-4">
+            <div class="accordion w-100" id="accordion1">
+                <div class="card shadow">
+                    <div class="card-header" id="heading1">
+                        <a role="button" href="#collapse1" data-toggle="collapse" data-target="#collapse1"
+                            aria-expanded="false" aria-controls="collapse1">
+                            <strong>Buat Kategori Baru</strong>
+                        </a>
+                    </div>
+
+
+                    <table class="table table-hover datatables" id="dataTable-category">
+                        <thead>
+                            <tr>
+                                <th>Nama Kategori</th>
+                                <th>Dibuat Oleh</th>
+                                <th>Tanggal Pembuatan</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($data as $data)
+                                <tr>
+                                    <td>{{ $data->NAME }}</td>
+                                    <td>{{ $data->user['name'] }}</td>
+                                    <td>{{ $data->CREATED_DATE }}</td>
+                                    <td><button class="btn btn-sm dropdown-toggle more-horizontal" type="button"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="text-muted sr-only">Action</span>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <button class="dropdown-item" wire:click=''>Edit</button>
+                                            <button class="dropdown-item"
+                                                wire:click='SoftDelete({{ $data->ID }})'>Remove</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        {{-- Form Add New Category --}}
         <div class="col-md-4 mb-4">
             <div class="accordion w-100" id="accordion1">
                 <div class="card shadow">
                     <div class="card-header" id="heading1">
                         <a role="button" href="#collapse1" data-toggle="collapse" data-target="#collapse1"
                             aria-expanded="false" aria-controls="collapse1">
-                            <strong>Buat Kategori</strong>
+                            <strong>Buat Kategori Baru</strong>
                         </a>
                     </div>
                     <div id="collapse1" class="collapse show" aria-labelledby="heading1" data-parent="#accordion1">
                         <div class="card-body">
-                            <form wire:submit.prevent="AddNewCategory">
+                            <form wire:submit.prevent="AddNew">
                                 <div class="form-group">
                                     <label for="inputCategory">Nama Kategori</label>
                                     <input type="text" wire:model.defer="inputCategory" id="inputCategory"
@@ -59,3 +107,19 @@
             </div>
         </div>
     </div>
+
+    {{-- Plugin DataTable --}}
+    @push('script')
+        <link rel="stylesheet" href="{{ url('build/css/dataTables.bootstrap4.css') }}">
+        <script src={{ url('build/js/jquery.dataTables.min.js') }}></script>
+        <script src={{ url('build/js/dataTables.bootstrap4.min.js') }}></script>
+        <script>
+            $('#dataTable-category').DataTable({
+                autoWidth: true,
+                "lengthMenu": [
+                    [10, 30, 50, -1],
+                    [10, 30, 50, "All"]
+                ]
+            });
+        </script>
+    @endpush
