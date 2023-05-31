@@ -30,7 +30,7 @@ return new class () extends Migration {
             ->onUpdate('cascade');
 
             // CATEGORY_DELETED_BY
-            $table->foreignId('CATEGORY_DLETED_BY')
+            $table->foreignId('CATEGORY_DELETED_BY')
             ->nullable(true)
             ->constrained('users', 'id')
             ->onUpdate('cascade');
