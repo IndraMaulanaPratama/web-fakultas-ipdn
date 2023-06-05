@@ -11,52 +11,67 @@ class CategoryManager extends Component
 {
     public $login;
     public $inputCategory;
+    public $formOption = false;
+
+    protected $listeners = [
+      'responseAddNew',
+      'cancelUpdate',
+      'responseUpdate',
+    ];
 
     public function mount()
     {
         $this->login = Auth::user();
     }
 
-    public function AddNew()
+    public function responseAddNew($data)
     {
+        session()->flash($data['status'], $data['message']);
+    }
 
-        // Validasi Data Mandatory
-        $this->validate([
-          'inputCategory' => ['required', 'unique:CATEGORY,CATEGORY_NAME'],
-        ]);
+    public function FormUpdate($id)
+    {
+        $this->formOption = true;
+        $data =  category::find($id);
+        $this->emit('showFormUpdate', $data);
+    }
 
-        /** Proses Tambah Data Kategori */
-        /**
-         * 1. Inisialisasi Proses input data
-         * 2. Handle kondisi ketika proses input berhasil dijalankan
-         * 3. Handle kondisi ketika gagal dijalankan
-         * 4. Handle kondisi kegagalan system
-         */
+    public function responseUpdate($data)
+    {
+      $this->formOption = false;
+      session()->flash($data['status'], $data['message']);
+    }
 
-        try {
-            // Step 1
-            $processInput = category::addCategory($this->inputCategory);
-
-            if ($processInput) : // Step 2
-                $this->inputCategory = null;
-                session()->flash('success', 'Kategori baru berhasil ditambahkan');
-            else : // Step3
-                $this->inputCategory = null;
-                session()->flash('error', 'Kategori baru gagal ditambahkan');
-            endif;
-
-        } catch (\Throwable $th) { // Step 4
-            session()->flash('error', 'Terdapat kesalah internal didalam system, silahkan hubungi administrator untuk menyelesaikan masalah. Terimakasih');
-        }
-
+    public function cancelUpdate()
+    {
+        $this->formOption = false;
     }
 
     public function SoftDelete($id)
     {
         $category = category::find($id);
-        $category->CATEGORY_DELETED_AT = Carbon::now('Asia/Jakarta');
-        $category->CATEGORY_DELETED_BY = $this->login->id;
-        $category->save();
+
+        /** PROCESS SOFT DELETE CATEGORY
+         * 1. Inisialisasi tanggal dan user proses penghapusan data
+         * 2. Eksekusi perubahan data
+         * 3. Kirimkan response berhasil
+         * 4. Kirimkan response gagal
+         */
+
+        try {
+            // Step 1
+            $category->CATEGORY_DELETED_AT = Carbon::now('Asia/Jakarta');
+            $category->CATEGORY_DELETED_BY = $this->login->id;
+
+
+            if ($category->save()) : // Step 2
+                // Step 3
+                session()->flash('success', 'Kategori yang anda pilih berhasil dihapuskan');
+            endif;
+
+        } catch (\Throwable $th) { // Step 4
+            session()->flash('error', 'Kategori yang anda pilih gagal dihapuskan');
+        }
     }
 
     public function render()
@@ -69,12 +84,13 @@ class CategoryManager extends Component
         ]);
 
         $params = [
-          'title' => 'Daftar KAtegori - IPDN Kampus Daerah',
+          'title' => 'Daftar Kategori - IPDN Kampus Daerah',
           'page_name' => 'Daftar Kategori',
         ];
 
         return view('livewire.admin.category-manager', ['data' => $category])
         ->extends('layouts.admin', $params)
         ->section('content');
+
     }
 }
