@@ -42,31 +42,9 @@
                     </div>
 
                     <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-8">
-                                <select wire:model="inputSort" class="form-control col-md-3" id="inputSort">
-                                    <option value="">{{ __('Urutan Data:') }}</option>
-                                    <option value="asc_name">{{ __('Nama A-Z') }}</option>
 
-                                    <option value="desc_name">{{ __('Nama Z-A') }}</option>
-
-                                    <option value="asc_date">{{ __('Tanggal Dibuat A-Z') }}</option>
-
-                                    <option value="desc_date">{{ __('Tanggal Dibuat Z-A') }}</option>
-
-                                </select>
-                            </div>
-
-                            <div class="col-md-4">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text fe fe-search" id="inputGroupPrepend"></span>
-                                    </div>
-                                    <input type="text" wire:model='inputSearch' class="form-control"
-                                        id="validationCustomUsername" aria-describedby="inputGroupPrepend">
-                                </div>
-                            </div>
-                        </div>
+                        {{-- Data Table Area --}}
+                        @livewire('component.admin.article-manager.data-table')
                     </div>
                 </div>
             </div>
