@@ -62,9 +62,16 @@ class User extends Authenticatable
         return $this->belongsTo(role::class, 'role');
     }
 
-    /** Relation to User */
+    /** Relation to Category */
     public function category(): HasMany
     {
-      return $this->hasMany(category::class, 'CATEGORY_CREATED_BY');
+        return $this->hasMany(category::class, 'CATEGORY_CREATED_BY');
     }
+
+    /** Relation Article */
+    public function article(): HasOneOrMany
+    {
+        return $this->hasMany(article::class, 'ARTICLE_CREATED_BY');
+    }
+
 }
