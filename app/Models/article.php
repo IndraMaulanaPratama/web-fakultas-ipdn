@@ -51,10 +51,9 @@ class article extends Model
     /** RELATIONSHIP AREA */
 
     // Relasi Table User
-    public function user(): BelongsTo
+    public function user(): HasOne
     {
-        // TODO:: Selesaikan Relasi ke user
-        return $this->belongsTo(User::class, 'ARTICLE_CREATED_BY');
+        return $this->hasOne(User::class, 'id', 'ARTICLE_CREATED_BY');
     }
 
     // Relation to category
