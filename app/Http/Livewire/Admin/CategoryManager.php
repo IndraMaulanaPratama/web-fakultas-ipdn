@@ -34,6 +34,7 @@ class CategoryManager extends Component
     public function mount()
     {
         $this->login = Auth::user();
+        $this->formOption = 'add';
     }
 
     public function updated()
@@ -54,11 +55,13 @@ class CategoryManager extends Component
             $this->sortField = 'CATEGORY_CREATED_AT';
             $this->sortOption = 'DESC';
         endif;
+
     }
 
     public function responseAddNew($data)
     {
-      session()->flash($data['status'], $data['message']);
+        $this->formOption = 'add';
+        session()->flash($data['status'], $data['message']);
     }
 
     public function FormUpdate($id)

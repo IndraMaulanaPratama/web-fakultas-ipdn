@@ -1,32 +1,6 @@
 <div>
     {{-- In work, do what you enjoy. --}}
 
-    {{-- Alert for success feedback from backend --}}
-    @if (session()->has('success'))
-        <div class="alert alert-primary shadow-lg alert-dismissible fade show" role="alert">
-            <i class="fe fe-check-circle"></i>
-            <span>
-                {{ session('success') }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </span>
-        </div>
-    @endif
-
-    {{-- Alert for failed or errors feedback from backend --}}
-    @if (session()->has('error'))
-        <div class="alert alert-danger shadow-lg alert-dismissible fade show" role="alert">
-            <i class="fe fe-x-circle"></i>
-            <span>
-                {{ session('error') }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </span>
-        </div>
-    @endif
-
     {{-- Content Area --}}
     <div class="row">
         {{-- Data Table Category --}}
@@ -41,6 +15,33 @@
                     </div>
 
                     <div class="card-body">
+
+                        {{-- Alert for success feedback from backend --}}
+                        @if (session()->has('success'))
+                            <div class="alert alert-primary shadow-lg alert-dismissible fade show" role="alert">
+                                <i class="fe fe-check-circle"></i>
+                                <span>
+                                    {{ session('success') }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </span>
+                            </div>
+                        @endif
+
+                        {{-- Alert for failed or errors feedback from backend --}}
+                        @if (session()->has('error'))
+                            <div class="alert alert-danger shadow-lg alert-dismissible fade show" role="alert">
+                                <i class="fe fe-x-circle"></i>
+                                <span>
+                                    {{ session('error') }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </span>
+                            </div>
+                        @endif
+
 
 
                         {{-- Data Table Area --}}
@@ -121,7 +122,7 @@
         </div>
 
         {{-- Form Add New and Edit Data Category --}}
-        @if ('add' == $formOption || true == $formOption)
+        @if ('add' == $formOption)
             @livewire('component.admin.category-manager.form-add-category')
         @elseif('update' == $formOption)
             @livewire('component.admin.category-manager.form-update-category')
