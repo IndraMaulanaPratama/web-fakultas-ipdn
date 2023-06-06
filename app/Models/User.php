@@ -69,9 +69,8 @@ class User extends Authenticatable
     }
 
     /** Relation Article */
-    public function article(): HasOneOrMany
+    public function article(): HasMany
     {
         return $this->hasMany(article::class, 'ARTICLE_CREATED_BY');
     }
-
 }
