@@ -82,6 +82,7 @@
                                             <th>{{ __('Action') }}</th>
                                         </tr>
                                     </thead>
+
                                     <tbody>
                                         @foreach ($paginate as $data)
                                             <tr>
@@ -106,6 +107,7 @@
                                         @endforeach
 
                                     </tbody>
+
                                 </table>
 
                                 <hr class="pb-5">
@@ -119,7 +121,7 @@
         </div>
 
         {{-- Form Add New and Edit Data Category --}}
-        @if ('add' == $formOption || false == $formOption)
+        @if ('add' == $formOption || true == $formOption)
             @livewire('component.admin.category-manager.form-add-category')
         @elseif('update' == $formOption)
             @livewire('component.admin.category-manager.form-update-category')
