@@ -13,23 +13,24 @@ class DataTable extends Component
 {
     use WithPagination;
 
-    public $inputSort = null;
     public $inputStatus = null;
     public $inputCategory = null;
     public $inputSearch = null;
+    public $inputSort = null;
     public $login;
 
+    public $sortField = 'ARTICLE_CREATED_AT';
+    public $sortOption = 'DESC';
     protected $paginationTheme = 'bootstrap';
-    protected $sortField = 'ARTICLE_CREATED_AT';
-    protected $sortOption = 'DESC';
-    protected $selectCategory;
 
     public function mount()
     {
         $this->login = Auth::user();
+
+        // $article = ;
     }
 
-    public function update()
+    public function updated()
     {
         // Handle for Input Sort
         if ('asc_title' == $this->inputSort) :
@@ -70,7 +71,7 @@ class DataTable extends Component
         return view(
             'livewire.component.admin.article-manager.data-table',
             [
-              'paginate' => article::with('category')
+              'paginate' => article::with('user', 'category')
               ->nullDeleted()
               ->where(function ($query) {
 
@@ -84,10 +85,8 @@ class DataTable extends Component
                       $query->category($this->inputCategory);
                   endif;
               })
-              // ->status($this->inputStatus)
-              // ->category($this->inputCategory)
               ->searchTitle($this->inputSearch)
-              ->orderBy($this->sortField, $this->sortOption)
+              ->orderBy($this->sortField, $this->sortOption) // TODO:: Belum berfungsi
               ->paginate(
                   15,
                   [
@@ -96,14 +95,16 @@ class DataTable extends Component
                 'ARTICLE_CATEGORY',
                 'ARTICLE_STATUS',
                 'ARTICLE_CREATED_AT AS CREATED_DATE',
+                'ARTICLE_CREATED_BY'
               ]
               ),
-                  'category' => category::nullDeleted()->get(
-                      [
+
+              'category' => category::nullDeleted()->get(
+                  [
                     'CATEGORY_ID',
                     'CATEGORY_NAME'
                   ]
-                  ),
+              ),
         ]
         );
     }
