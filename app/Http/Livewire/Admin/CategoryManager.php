@@ -21,9 +21,9 @@ class CategoryManager extends Component
     public $inputSearch;
 
 
+    public $sortField = 'CATEGORY_CREATED_AT';
+    public $sortOption = 'DESC';
     protected $paginationTheme = 'bootstrap';
-    protected $sortField = 'CATEGORY_CREATED_AT';
-    protected $sortOption = 'DESC';
 
     protected $listeners = [
       'responseAddNew',
@@ -36,7 +36,7 @@ class CategoryManager extends Component
         $this->login = Auth::user();
     }
 
-    public function update()
+    public function updated()
     {
         if ('asc_name' == $this->inputSort) :
             $this->sortField = 'CATEGORY_NAME';
