@@ -86,9 +86,9 @@ class DataTable extends Component
                   endif;
               })
               ->searchTitle($this->inputSearch)
-              ->orderBy($this->sortField, $this->sortOption) // TODO:: Belum berfungsi
+              ->orderBy($this->sortField, $this->sortOption)
               ->paginate(
-                  15,
+                  8,
                   [
                 'ARTICLE_ID AS ID',
                 'ARTICLE_TITLE',

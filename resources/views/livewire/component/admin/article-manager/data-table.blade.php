@@ -53,7 +53,6 @@
 
         {{-- Filter Category --}}
         <div class="col-md-5">
-            {{-- {{ $category[0]->CATEGORY_ID }} --}}
             <select wire:model="inputCategory" class="form-control col-md-4" id="inputCategory">
                 <option value="">{{ __('Kategori:') }}</option>
                 <option value="">{{ __('Semua Data') }}</option>
