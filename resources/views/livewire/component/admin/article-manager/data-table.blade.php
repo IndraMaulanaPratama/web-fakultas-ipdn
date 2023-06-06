@@ -34,11 +34,8 @@
             <select wire:model="inputSort" class="form-control" id="inputSort">
                 <option value="">{{ __('Urutan Data:') }}</option>
                 <option value="asc_title">{{ __('Judul A-Z') }}</option>
-
                 <option value="desc_title">{{ __('Judul Z-A') }}</option>
-
                 <option value="asc_date">{{ __('Tanggal Dibuat A-Z') }}</option>
-
                 <option value="desc_date">{{ __('Tanggal Dibuat Z-A') }}</option>
 
             </select>
@@ -81,6 +78,7 @@
 
     <div class="mb-4">&nbsp;</div>
 
+    {{-- Data Table --}}
     <div class="row">
         <div class="col-md-12">
             <table class="table table-hover" id="dataTable-category">
@@ -89,7 +87,7 @@
                         <th>{{ __('Judul Postingan') }}</th>
                         <th>{{ __('Kategori') }}</th>
                         <th>{{ __('Status') }}</th>
-                        {{-- <th>{{ __('Dibuat Oleh') }}</th> --}}
+                        <th>{{ __('Dibuat Oleh') }}</th>
                         <th>{{ __('Tanggal Pembuatan') }}</th>
                         <th>{{ __('Action') }}</th>
                     </tr>
@@ -100,7 +98,7 @@
                             <td>{{ $data->ARTICLE_TITLE }}</td>
                             <td>{{ $data->category['CATEGORY_NAME'] }}</td>
                             <td>{{ 1 == $data->ARTICLE_STATUS ? 'Tayang' : 'Draft' }}</td>
-                            {{-- <td>{{ $data->user['name'] }}</td> --}}
+                            <td>{{ $data->user['name'] }}</td>
                             <td>{{ $data->CREATED_DATE }}</td>
                             <td><button class="btn btn-sm dropdown-toggle more-horizontal" type="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
