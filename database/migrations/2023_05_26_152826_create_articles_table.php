@@ -40,7 +40,7 @@ return new class () extends Migration {
             ->onUpdate('cascade');
 
             // ARTICLE_DELETED_BY
-            $table->foreignId('ARTICLE_DLETED_BY')
+            $table->foreignId('ARTICLE_DELETED_BY')
             ->nullable(true)
             ->constrained('users', 'id')
             ->onUpdate('cascade');
