@@ -42,51 +42,76 @@
 
                     <div class="card-body">
 
-                        <div class="form-group">
-                            <select name="sortBy" class="form-control" id="">
-                                <option value="nama_ascending">{{ __('Nama A-Z') }}</option>
 
-                                <option value="nama_descending">{{ __('Nama Z-A') }}</option>
+                        {{-- Data Table Area --}}
+                        <div class="row">
+                            <div class="col-md-8">
+                                <select wire:model="inputSort" class="form-control col-md-3" id="inputSort">
+                                    <option value="">Urutan Data:</option>
+                                    <option value="asc_name">{{ __('Nama A-Z') }}</option>
 
-                                <option value="tanggal_ascending">{{ __('Tanggal Dibuat A-Z') }}</option>
+                                    <option value="desc_name">{{ __('Nama Z-A') }}</option>
 
-                                <option value="tanggal_descending">{{ __('Tanggal Dibuat Z-A') }}</option>
+                                    <option value="asc_date">{{ __('Tanggal Dibuat A-Z') }}</option>
 
-                            </select>
+                                    <option value="desc_date">{{ __('Tanggal Dibuat Z-A') }}</option>
+
+                                </select>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text fe fe-search" id="inputGroupPrepend"></span>
+                                    </div>
+                                    <input type="text" wire:model='inputSearch' class="form-control"
+                                        id="validationCustomUsername" aria-describedby="inputGroupPrepend">
+                                </div>
+                            </div>
                         </div>
 
-                        <table class="table table-hover" id="dataTable-category">
-                            <thead>
-                                <tr>
-                                    <th>{{ __('Nama Kategori') }}</th>
-                                    <th>{{ __('Dibuat Oleh') }}</th>
-                                    <th>{{ __('Tanggal Pembuatan') }}</th>
-                                    <th>{{ __('Action') }}</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($data as $data)
-                                    <tr>
-                                        <td>{{ $data->NAME }}</td>
-                                        <td>{{ $data->user['name'] }}</td>
-                                        <td>{{ $data->CREATED_DATE }}</td>
-                                        <td><button class="btn btn-sm dropdown-toggle more-horizontal" type="button"
-                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <span class="text-muted sr-only">{{ __('Action') }}</span>
-                                            </button>
-                                            <div class="dropdown-menu dropdown-menu-right">
-                                                <button class="dropdown-item"
-                                                    wire:click='FormUpdate({{ $data->ID }})'>{{ __('Edit') }}</button>
-                                                <button class="dropdown-item"
-                                                    wire:click='SoftDelete({{ $data->ID }})'>
-                                                    {{ __('Remove') }} </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @endforeach
+                        {{-- Data Table --}}
+                        <div class="row mt-4">
+                            <div class="col-md-12">
+                                <table class="table table-hover" id="dataTable-category">
+                                    <thead>
+                                        <tr>
+                                            <th>{{ __('Nama Kategori') }}</th>
+                                            <th>{{ __('Dibuat Oleh') }}</th>
+                                            <th>{{ __('Tanggal Pembuatan') }}</th>
+                                            <th>{{ __('Action') }}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($paginate as $data)
+                                            <tr>
+                                                <td>{{ $data->NAME }}</td>
+                                                <td>{{ $data->user['name'] }}</td>
+                                                <td>{{ $data->CREATED_DATE }}</td>
+                                                <td><button class="btn btn-sm dropdown-toggle more-horizontal"
+                                                        type="button" data-toggle="dropdown" aria-haspopup="true"
+                                                        aria-expanded="false">
+                                                        <span class="text-muted sr-only">{{ __('Action') }}</span>
+                                                    </button>
+                                                    <div class="dropdown-menu dropdown-menu-right">
+                                                        <button class="dropdown-item"
+                                                            wire:click='FormUpdate({{ $data->ID }})'>{{ __('Edit') }}
+                                                        </button>
+                                                        <button class="dropdown-item"
+                                                            wire:click='SoftDelete({{ $data->ID }})'>{{ __('Remove') }}
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
 
-                            </tbody>
-                        </table>
+                                    </tbody>
+                                </table>
+
+                                <hr class="pb-5">
+                                {{ $paginate->links() }}
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -94,10 +119,10 @@
         </div>
 
         {{-- Form Add New and Edit Data Category --}}
-        @if (false == $formOption)
-            @livewire('component.admin.category-manager.form-add-category')
-        @else
+        @if ('update' == $formOption)
             @livewire('component.admin.category-manager.form-update-category')
+        @else
+            @livewire('component.admin.category-manager.form-add-category')
         @endif
     </div>
 </div>
