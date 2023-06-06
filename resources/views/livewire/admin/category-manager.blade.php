@@ -119,10 +119,10 @@
         </div>
 
         {{-- Form Add New and Edit Data Category --}}
-        @if ('update' == $formOption)
-            @livewire('component.admin.category-manager.form-update-category')
-        @else
+        @if ('add' == $formOption || false == $formOption)
             @livewire('component.admin.category-manager.form-add-category')
+        @elseif('update' == $formOption)
+            @livewire('component.admin.category-manager.form-update-category')
         @endif
     </div>
 </div>

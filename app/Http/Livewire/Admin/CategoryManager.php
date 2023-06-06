@@ -34,7 +34,6 @@ class CategoryManager extends Component
     public function mount()
     {
         $this->login = Auth::user();
-        $this->formOption = 'add';
     }
 
     public function update()
@@ -59,8 +58,7 @@ class CategoryManager extends Component
 
     public function responseAddNew($data)
     {
-        $this->formOption = 'add';
-        session()->flash($data['status'], $data['message']);
+      session()->flash($data['status'], $data['message']);
     }
 
     public function FormUpdate($id)
