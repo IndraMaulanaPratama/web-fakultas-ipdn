@@ -4,6 +4,8 @@ namespace App\Http\Livewire\Component\Admin\ArticleManager;
 
 use App\Models\article;
 use App\Models\category;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -15,6 +17,7 @@ class DataTable extends Component
     public $inputStatus = null;
     public $inputCategory = null;
     public $inputSearch = null;
+    public $login;
 
     protected $paginationTheme = 'bootstrap';
     protected $sortField = 'ARTICLE_CREATED_AT';
@@ -23,6 +26,7 @@ class DataTable extends Component
 
     public function mount()
     {
+        $this->login = Auth::user();
     }
 
     public function update()
@@ -44,6 +48,21 @@ class DataTable extends Component
             $this->sortField = 'ARTICLE_CREATED_AT';
             $this->sortOption = 'DESC';
         endif;
+    }
+
+    public function SoftDelete($id)
+    {
+        $article = article::find($id);
+
+        try {
+            $article->ARTICLE_DELETED_AT = Carbon::now('Asia/Jakarta');
+            $article->ARTICLE_DELETED_BY = $this->login->id;
+            $article->save();
+
+            session()->flash('success', 'Postingan yang anda pilih berhasil dihapuskan');
+        } catch (\Throwable $th) {
+            session()->flash('error', 'Postingan yang anda pilih gagal dihapuskan');
+        }
     }
 
     public function render()
