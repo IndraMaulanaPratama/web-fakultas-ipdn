@@ -63,4 +63,9 @@ class category extends Model
         return $query->whereNull('CATEGORY_DELETED_AT');
     }
 
+    public function scopeLikeName($query, $name)
+    {
+      return $query->where('CATEGORY_NAME', 'LIKE', '%'. $name .'%');
+    }
+
 }
