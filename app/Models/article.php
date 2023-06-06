@@ -75,7 +75,7 @@ class article extends Model
     // Search Data Using where LIKE on field Title
     public function scopeSearchTitle($query, $title)
     {
-        return $query->where('ARTICLE_TITLE', 'LIKE', '%'. $title .'%');
+        return $query->where('ARTICLE_TITLE', 'LIKE', $title. '%');
     }
 
     // Search Data Bsed On Kategori
