@@ -1,5 +1,30 @@
 {{-- The Master doesn't talk, he acts. --}}
 <div>
+    {{-- Alert for success feedback from backend --}}
+    @if (session()->has('success'))
+        <div class="alert alert-primary shadow-lg alert-dismissible fade show" role="alert">
+            <i class="fe fe-check-circle"></i>
+            <span>
+                {{ session('success') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </span>
+        </div>
+    @endif
+
+    {{-- Alert for failed or errors feedback from backend --}}
+    @if (session()->has('error'))
+        <div class="alert alert-danger shadow-lg alert-dismissible fade show" role="alert">
+            <i class="fe fe-x-circle"></i>
+            <span>
+                {{ session('error') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </span>
+        </div>
+    @endif
 
     {{-- Settings Data Table Area --}}
     <div class="row">
