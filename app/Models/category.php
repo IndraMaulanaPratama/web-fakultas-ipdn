@@ -4,10 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Database\Eloquent\Relations\HasOneOrMany;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 
@@ -52,20 +50,32 @@ class category extends Model
         ]);
     }
 
+    /** RELATIONSHIP AREA */
+
     // Relasi Table User
     public function user(): HasOne
     {
-      return $this->hasOne(User::class, 'id', 'CATEGORY_CREATED_BY');
+        return $this->hasOne(User::class, 'id', 'CATEGORY_CREATED_BY');
     }
 
+    public function category(): HasMany
+    {
+        return $this->hasMany(article::class, 'ARTICLE_CATEGORY');
+    }
+
+    /** END OF RELATIONSHIP AREA */
+
+
+    // Active or Null Deleted Date
     public function scopeNullDeleted($query)
     {
         return $query->whereNull('CATEGORY_DELETED_AT');
     }
 
+    // Search by Name using where like
     public function scopeLikeName($query, $name)
     {
-      return $query->where('CATEGORY_NAME', 'LIKE', '%'. $name .'%');
+        return $query->where('CATEGORY_NAME', 'LIKE', '%'. $name .'%');
     }
 
 }
