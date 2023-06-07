@@ -12,7 +12,4 @@
 @endsection
 
 @push('script')
-<script>
-  CKEDITOR.replace( 'inputContent' );
-</script>
 @endpush
