@@ -33,6 +33,9 @@
     {{-- Livewire Style --}}
     @livewireStyles
 
+    {{-- Style Area From Content --}}
+    @stack('style')
+
 </head>
 
 {{-- BODY --}}
@@ -278,7 +281,7 @@
     </script>
     {{-- END OF SCRIPT AREA --}}
 
-    {{-- Tempat Inject Javascript dati content --}}
+    {{-- Tempat Inject Javascript dari content --}}
     @stack('script')
 
     {{-- Livewire Script --}}
