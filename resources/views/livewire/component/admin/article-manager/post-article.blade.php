@@ -1,4 +1,30 @@
 <div>
+    {{-- Alert for success feedback from backend --}}
+    @if (session()->has('success'))
+        <div class="alert alert-primary shadow-lg alert-dismissible fade show" role="alert">
+            <i class="fe fe-check-circle"></i>
+            <span>
+                {{ session('success') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </span>
+        </div>
+    @endif
+
+    {{-- Alert for failed or errors feedback from backend --}}
+    @if (session()->has('error'))
+        <div class="alert alert-danger shadow-lg alert-dismissible fade show" role="alert">
+            <i class="fe fe-x-circle"></i>
+            <span>
+                {{ session('error') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </span>
+        </div>
+    @endif
+
     {{-- Close your eyes. Count to one. That is how long forever feels. --}}
     <form wire:submit.prevent="AddNew">
         <div class="row">
@@ -20,17 +46,14 @@
                                 <div class="col-md-12">
 
                                     <div class="form-group">
-                                        <input type="text" wire:model='inputJudul' class="form-control col-md-6"
+                                        <input type="text" wire:model='inputTitle' class="form-control col-md-6"
                                             placeholder="Judul Artikel" required>
                                     </div>
 
                                     <div class="form-group">
-                                        <textarea name="" id="inputContent" class="form-control rounded-sm"></textarea>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <button type="button" class="btn btn-secondary">Simpan</button>
-                                        <button type="button" class="btn btn-primary">Tayangkan</button>
+                                        <div class="" wire:ignore>
+                                            <textarea id="inputContent"></textarea>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -39,7 +62,7 @@
                 </div>
             </div>
 
-            {{-- Category Area --}}
+            {{-- Sidebar Area --}}
             <div class="col-md-4">
                 <div class="accordion w-100" id="accordion1">
 
@@ -48,11 +71,13 @@
                         {{-- Action Option --}}
                         <div class="">
                             <div class="form-group">
-                                <button type="button" class="btn btn-primary">Simpan</button>
+                                <button type="button" class="btn btn-accent">Draft</button>
                                 &nbsp;
-                                <button type="button" class="btn btn-info">Tayangkan</button>
+                                <button type="submit" id="addNew" class="btn btn-info">Tayangkan</button>
                             </div>
                         </div>
+
+                        <hr>
 
                         {{-- Select Category --}}
                         <div class="card shadow">
@@ -69,11 +94,12 @@
                                     <div class="col-md-12">
 
                                         <div class="form-group">
-                                            <select wire:model='inputCategory' class="form-control">
+                                            <select wire:model='inputCategory' class="form-control" required>
                                                 <option value="">Pilih Kategori</option>
-                                                <option value="">Ikeh</option>
-                                                <option value="">Ikeh</option>
-                                                <option value="">Kimochi</option>
+                                                @foreach ($category as $item)
+                                                    <option value="{{ $item->CATEGORY_ID }}"> {{ $item->CATEGORY_NAME }}
+                                                    </option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
@@ -112,4 +138,20 @@
 
         </div>
     </form>
+
+    @push('script')
+        <script>
+            $(document).ready(function() {
+                const content = CKEDITOR.replace('inputContent');
+                content.on('change', function(event) {
+                    console.log(event.editor.getData())
+                    @this.set('inputContent', event.editor.getData())
+                })
+
+                $('#addNew').click(function(event) {
+                    CKEDITOR.instances['inputContent'].setData('')
+                })
+            })
+        </script>
+    @endpush
 </div>
