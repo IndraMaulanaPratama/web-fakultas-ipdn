@@ -56,9 +56,15 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/home', Dashboard::class)->name('home');
     Route::get('/account-manager', AccountManager::class)->name('account-manager');
     Route::get('/kategori', CategoryManager::class)->name('category-manager');
+
+    // Daftar Postingan
     Route::get('/postingan', function () {
-        return view(
-            'livewire.admin.article-manager');
+        return view('livewire.admin.article-manager');
+    });
+
+    // Buat Postingan
+    Route::get('/postingan/create', function() {
+      return view('livewire.admin.post-article');
     });
 
 });
