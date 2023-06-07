@@ -67,7 +67,13 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
       return view('livewire.admin.post-article');
     });
 
-});
+
+    // Edit Postingan
+    Route::get('/postingan/edit/{id}', function() {
+      return view('livewire.admin.edit-article');
+    });
+
+  });
 
 // Logout
 Route::get('/logout', function (Request $request) {
