@@ -71,6 +71,13 @@ class article extends Model
         return $query->whereNull('ARTICLE_DELETED_AT');
     }
 
+    // Get Trash Data
+    public function scopeDeleted($query)
+    {
+        return $query->whereNotNull('ARTICLE_DELETED_AT');
+    }
+
+
     // Search Data Using where LIKE on field Title
     public function scopeSearchTitle($query, $title)
     {
