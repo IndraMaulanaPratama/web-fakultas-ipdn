@@ -17,6 +17,11 @@ class TrashData extends Component
     public $inputSearch = null;
     public $inputSort = null;
 
+    // TODO::Selesaikan variable untuk table bagian category
+    public $inputSortCategory = null;
+    public $inputSearchCategory;
+
+
     public $sortField = 'ARTICLE_CREATED_AT';
     public $sortOption = 'DESC';
     public $sortFieldCategory = 'CATEGORY_CREATED_AT';
@@ -99,8 +104,7 @@ class TrashData extends Component
                 'CATEGORY_CREATED_AT AS CREATED_DATE',
                 'CATEGORY_CREATED_BY'
                 ]
-              )
-            ]
+              ),
 
               'category' => category::nullDeleted()->get(
                   [
