@@ -104,12 +104,13 @@
                                     <span class="text-muted sr-only">{{ __('Action') }}</span>
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <button class="dropdown-item"
-                                        wire:click='FormUpdate({{ $data->ID }})'>{{ __('Edit') }}
-                                    </button>
+                                    <a href="{{ url('postingan/edit/' . $data->ID) }}"
+                                        class="dropdown-item">{{ __('Edit') }}
+                                    </a>
+
                                     <button class="dropdown-item"
                                         wire:click='SoftDelete({{ $data->ID }})'>{{ __('Remove') }}
-                                    </button>
+                                        </buton>
                                 </div>
                             </td>
                         </tr>
