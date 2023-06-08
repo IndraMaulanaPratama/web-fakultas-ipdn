@@ -6,6 +6,7 @@ use App\Http\Livewire\Admin\Dashboard;
 use App\Http\Livewire\Category\ListBerita as CategoryListBerita;
 use App\Http\Livewire\Category\ListCategory;
 use App\Http\Livewire\Component\Admin\ArticleManager\EditArticle;
+use App\Http\Livewire\Component\Admin\ArticleManager\TrashData;
 use App\Http\Livewire\DetailBerita\DetailBerita;
 use App\Http\Livewire\Homepage\Homopage;
 use App\Http\Livewire\ListBerita\ListBerita;
@@ -48,14 +49,14 @@ Route::middleware('guest')->group(function () {
 
 // Route Dashboard
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-    // Dashboard
-    // Route::get('/home', function () {
-    //     return view('admin.dashboard.dashboard');
-    // })->name('home');
 
-    // Dashboard With Template
+    // Dashboard
     Route::get('/home', Dashboard::class)->name('home');
+
+    // Account Manager
     Route::get('/account-manager', AccountManager::class)->name('account-manager');
+
+    // Category Manager
     Route::get('/kategori', CategoryManager::class)->name('category-manager');
 
     // Daftar Postingan
@@ -70,6 +71,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     // Edit Postingan
     Route::get('/postingan/edit/{id}', EditArticle::class);
+
+    // Trash Data Postingan & Category
+    Route::get('/postingan/trash/', TrashData::class);
 
 });
 
