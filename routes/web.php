@@ -5,6 +5,7 @@ use App\Http\Livewire\Admin\CategoryManager;
 use App\Http\Livewire\Admin\Dashboard;
 use App\Http\Livewire\Category\ListBerita as CategoryListBerita;
 use App\Http\Livewire\Category\ListCategory;
+use App\Http\Livewire\Component\Admin\ArticleManager\EditArticle;
 use App\Http\Livewire\DetailBerita\DetailBerita;
 use App\Http\Livewire\Homepage\Homopage;
 use App\Http\Livewire\ListBerita\ListBerita;
@@ -63,17 +64,14 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     });
 
     // Buat Postingan
-    Route::get('/postingan/create', function() {
-      return view('livewire.admin.post-article');
+    Route::get('/postingan/create', function () {
+        return view('livewire.admin.post-article');
     });
-
 
     // Edit Postingan
-    Route::get('/postingan/edit/{id}', function() {
-      return view('livewire.admin.edit-article');
-    });
+    Route::get('/postingan/edit/{id}', EditArticle::class);
 
-  });
+});
 
 // Logout
 Route::get('/logout', function (Request $request) {
