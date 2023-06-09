@@ -10,7 +10,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     @livewireStyles
-    <title>Kampus Daerah Papua - IPDN</title>
+    <title>Kampus Daerah - IPDN</title>
 </head>
 
 <body>
