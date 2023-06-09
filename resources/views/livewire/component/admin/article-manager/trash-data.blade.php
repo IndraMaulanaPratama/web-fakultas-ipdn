@@ -237,16 +237,15 @@
                                                         </button>
                                                         <div class="dropdown-menu dropdown-menu-right">
                                                             <button class="dropdown-item"
-                                                                wire:click='FormUpdate({{ $data->ID }})'>{{ __('Pulihkan') }}
+                                                                wire:click='RestoreCategory({{ $data->ID }})'>{{ __('Pulihkan') }}
                                                             </button>
                                                             <button class="dropdown-item"
-                                                                wire:click='SoftDelete({{ $data->ID }})'>{{ __('Hapus Permanen') }}
+                                                                wire:click='DestroyCategory({{ $data->ID }})'>{{ __('Hapus Permanen') }}
                                                             </button>
                                                         </div>
                                                     </td>
                                                 </tr>
                                             @endforeach
-
                                         </tbody>
 
                                     </table>
