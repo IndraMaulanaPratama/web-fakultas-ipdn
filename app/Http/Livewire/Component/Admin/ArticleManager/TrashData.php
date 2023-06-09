@@ -19,14 +19,14 @@ class TrashData extends Component
 
     // TODO::Selesaikan variable untuk table bagian category
     public $inputSortCategory = null;
-    public $inputSearchCategory;
+    public $inputSearchCategory = null;
 
 
-    public $sortField = 'ARTICLE_CREATED_AT';
+    protected $paginationTheme = 'bootstrap';
+    public $sortField = 'CREATED_DATE';
     public $sortOption = 'DESC';
     public $sortFieldCategory = 'CATEGORY_CREATED_AT';
     public $sortOptionCategory = 'DESC';
-    protected $paginationTheme = 'bootstrap';
 
     public function mount()
     {
@@ -35,7 +35,7 @@ class TrashData extends Component
 
     public function updated()
     {
-        // Handle for Input Sort
+        // Handle for Input Sort Article
         if ('asc_title' == $this->inputSort) :
             $this->sortField = 'ARTICLE_TITLE';
             $this->sortOption = 'ASC';
@@ -45,12 +45,30 @@ class TrashData extends Component
             $this->sortOption = 'DESC';
 
         elseif ('asc_date' == $this->inputSort) :
-            $this->sortField = 'ARTICLE_CREATED_AT';
+            $this->sortField = 'CREATED_DATE';
             $this->sortOption = 'ASC';
 
         elseif ('desc_date' == $this->inputSort || null == $this->inputSort) :
-            $this->sortField = 'ARTICLE_CREATED_AT';
+            $this->sortField = 'CREATED_DATE';
             $this->sortOption = 'DESC';
+        endif;
+
+        // Handle for Input Sort Category
+        if ('asc_name' == $this->inputSortCategory) :
+            $this->sortFieldCategory = 'CATEGORY_NAME';
+            $this->sortOptionCategory = 'ASC';
+
+        elseif('desc_name' == $this->inputSortCategory):
+            $this->sortFieldCategory = 'CATEGORY_NAME';
+            $this->sortOptionCategory = 'DESC';
+
+        elseif('asc_date' == $this->inputSortCategory):
+            $this->sortFieldCategory = 'CATEGORY_CREATED_AT';
+            $this->sortOptionCategory = 'ASC';
+
+        elseif('desc_date' == $this->inputSortCategory || null == $this->inputSortCategory):
+            $this->sortFieldCategory = 'CATEGORY_CREATED_AT';
+            $this->sortOptionCategory = 'DESC';
         endif;
     }
 
@@ -94,8 +112,8 @@ class TrashData extends Component
 
               'paginate_category' => category::with('user')
               ->NullDeleted()
-              ->where('CATEGORY_NAME', 'LIKE', '%'. $this->inputSearch .'%')
-              ->orderBy($this->sortField, $this->sortOption)
+              ->where('CATEGORY_NAME', 'LIKE', '%'. $this->inputSearchCategory .'%')
+              ->orderBy($this->sortFieldCategory, $this->sortOptionCategory)
               ->paginate(
                   15,
                   [
