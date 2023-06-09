@@ -72,6 +72,12 @@ class category extends Model
         return $query->whereNull('CATEGORY_DELETED_AT');
     }
 
+    // Active or Null Deleted Date
+    public function scopeDeleted($query)
+    {
+        return $query->whereNotNull('CATEGORY_DELETED_AT');
+    }
+
     // Search by Name using where like
     public function scopeLikeName($query, $name)
     {
