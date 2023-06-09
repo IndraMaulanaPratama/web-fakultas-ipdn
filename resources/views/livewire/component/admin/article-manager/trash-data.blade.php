@@ -128,12 +128,12 @@
                                                             <span class="text-muted sr-only">{{ __('Action') }}</span>
                                                         </button>
                                                         <div class="dropdown-menu dropdown-menu-right">
-                                                            <a href="{{ url('postingan/edit/' . $data->ID) }}"
-                                                                class="dropdown-item">{{ __('Edit') }}
-                                                            </a>
+                                                            <button class="dropdown-item"
+                                                                wire:click='RestoreArticle({{ $data->ID }})'>{{ __('Pulihkan') }}
+                                                            </button>
 
                                                             <button class="dropdown-item"
-                                                                wire:click='SoftDelete({{ $data->ID }})'>{{ __('Remove') }}
+                                                                wire:click='DestroyArticle({{ $data->ID }})'>{{ __('Hapus Permanen') }}
                                                                 </buton>
                                                         </div>
                                                     </td>
@@ -164,20 +164,25 @@
         <div class="col-md-12">
             <div class="accordion accordion-boxed" id="accordion1">
 
-                {{-- Data Category --}}
                 <div class="card shadow">
+
+                    {{-- Header --}}
                     <div class="card-header" id="headingTwo">
                         <a role="button" href="#collapseTwo" data-toggle="collapse" data-target="#collapseTwo"
                             aria-expanded="false" aria-controls="collapseTwo">
                             <strong>{{ __('Daftar Data Kategori') }}</strong>
                         </a>
                     </div>
+
+                    {{-- Body --}}
                     <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo"
                         data-parent="#accordion1">
                         <div class="card-body">
 
-                            {{-- Data Table Area --}}
+                            {{-- Settings Data Table Area --}}
                             <div class="row">
+
+                                {{-- Sort Data --}}
                                 <div class="col-md-9">
                                     <select wire:model="inputSortCategory" class="form-control col-md-3"
                                         id="inputSort">
@@ -193,6 +198,7 @@
                                     </select>
                                 </div>
 
+                                {{-- Search Data --}}
                                 <div class="col-md-3">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
@@ -231,10 +237,10 @@
                                                         </button>
                                                         <div class="dropdown-menu dropdown-menu-right">
                                                             <button class="dropdown-item"
-                                                                wire:click='FormUpdate({{ $data->ID }})'>{{ __('Edit') }}
+                                                                wire:click='FormUpdate({{ $data->ID }})'>{{ __('Pulihkan') }}
                                                             </button>
                                                             <button class="dropdown-item"
-                                                                wire:click='SoftDelete({{ $data->ID }})'>{{ __('Remove') }}
+                                                                wire:click='SoftDelete({{ $data->ID }})'>{{ __('Hapus Permanen') }}
                                                             </button>
                                                         </div>
                                                     </td>
