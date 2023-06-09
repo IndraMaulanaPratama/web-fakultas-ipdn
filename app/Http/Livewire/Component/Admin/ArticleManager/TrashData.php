@@ -106,6 +106,41 @@ class TrashData extends Component
         }
     }
 
+    public function RestoreCategory($id)
+    {
+        // Initiazion data before restored by id
+        $category = category::find($id);
+        $category->CATEGORY_DELETED_AT = null;
+
+        // Proccess Restored data article
+        try {
+            $category->save();
+
+            session()->flash('success', 'Data Kategori Berhasil Dipulihkan');
+        } catch (\Throwable $th) {
+            session()->flash('error', 'Data Kategori Gagal Dipulihkan');
+
+            // Throw Error process restored
+            // session()->flash('error', $th->getMessage());
+        }
+
+    }
+
+    public function DestroyCategory($id)
+    {
+        // Process Destroying Data Article
+        try {
+            category::destroy($id);
+
+            session()->flash('success', 'Data Kategori Berhasil Dihapus');
+        } catch (\Throwable $th) {
+            session()->flash('error', 'Data Kategori Gagal Dihapus');
+
+            // Throw Error process destroying data
+            // session()->flash('error', $th->getMessage());
+        }
+    }
+
     public function render()
     {
         $params = [
