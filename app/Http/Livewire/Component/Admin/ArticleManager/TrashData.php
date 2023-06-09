@@ -72,6 +72,40 @@ class TrashData extends Component
         endif;
     }
 
+    public function RestoreArticle($id)
+    {
+        // Initiazion data before restored by id
+        $article = article::find($id);
+        $article->ARTICLE_DELETED_AT = null;
+
+        // Proccess Restored data article
+        try {
+            $article->save();
+
+            session()->flash('success', 'Data Article Berhasil Dipulihkan');
+        } catch (\Throwable $th) {
+            session()->flash('error', 'Data Article Gagal Dipulihkan');
+
+            // Throw Error process restored
+            // session()->flash('error', $th->getMessage());
+        }
+    }
+
+    public function DestroyArticle($id)
+    {
+        // Process Destroying Data Article
+        try {
+            article::destroy($id);
+
+            session()->flash('success', 'Data Article Berhasil Dihapus');
+        } catch (\Throwable $th) {
+            session()->flash('error', 'Data Article Gagal Dihapus');
+
+            // Throw Error process destroying data
+            // session()->flash('error', $th->getMessage());
+        }
+    }
+
     public function render()
     {
         $params = [
@@ -111,11 +145,11 @@ class TrashData extends Component
               ),
 
               'paginate_category' => category::with('user')
-              ->NullDeleted()
+              ->deleted()
               ->where('CATEGORY_NAME', 'LIKE', '%'. $this->inputSearchCategory .'%')
               ->orderBy($this->sortFieldCategory, $this->sortOptionCategory)
               ->paginate(
-                  15,
+                  8,
                   [
                 'CATEGORY_ID AS ID',
                 'CATEGORY_NAME AS NAME',
