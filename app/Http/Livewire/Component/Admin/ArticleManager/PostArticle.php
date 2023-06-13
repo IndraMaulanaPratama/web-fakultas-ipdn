@@ -19,30 +19,51 @@ class PostArticle extends Component
 
     public $login;
 
+    // Definitions og validation form
+    protected $rules = [
+        'inputTitle' => ['required', 'max:150'],
+        'inputThumbnail' => ['image', 'max:2048'],
+        'inputContent' => ['required'],
+    ];
+
     public function mount()
     {
         $this->login = Auth::user();
     }
 
+    // Real Time Validation
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
+    }
+
     public function AddNew()
     {
+        $this->validate();
+
+        // Inisialisasi Variable
+        $filename = $this->inputThumbnail->getClientOriginalName();
+
         // Inisialisasi Form Data
         $value = [
           'ARTICLE_CATEGORY' => $this->inputCategory,
           'ARTICLE_TITLE' => $this->inputTitle,
           'ARTICLE_CONTENT' => $this->inputContent,
+          'ARTICLE_THUMBNAIL' => $filename,
           'ARTICLE_STATUS' => 1,
           'ARTICLE_CREATED_BY' => $this->login->id,
         ];
 
-        // dd($value);
-
         // Process Insert Data
         try {
-            article::create($value);
+            // Upload File
+            $this->inputThumbnail->storeAS(
+                'photo',
+                $filename
+            );
 
-            // Clear Form Input Data
-            $this->clearForm();
+            // Insert to database
+            article::create($value);
 
             // Create Success Session Alert
             session()->flash('success', 'Artikel yang anda buat berhasil tersimpan didalam system');
@@ -53,6 +74,7 @@ class PostArticle extends Component
             session()->flash('error', $th->getMessage());
         }
 
+        $this->clearForm();
     }
 
     public function clearForm()
