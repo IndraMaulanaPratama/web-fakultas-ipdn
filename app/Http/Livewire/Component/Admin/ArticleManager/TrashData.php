@@ -17,10 +17,8 @@ class TrashData extends Component
     public $inputSearch = null;
     public $inputSort = null;
 
-    // TODO::Selesaikan variable untuk table bagian category
     public $inputSortCategory = null;
     public $inputSearchCategory = null;
-
 
     protected $paginationTheme = 'bootstrap';
     public $sortField = 'CREATED_DATE';
