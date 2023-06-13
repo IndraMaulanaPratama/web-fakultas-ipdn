@@ -127,6 +127,9 @@
                                         <div class="form-group">
                                             <input type="file" wire:model='inputThumbnail'
                                                 class="form-control form-input">
+                                            @error('inputThumbnail')
+                                                <span class="error">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
