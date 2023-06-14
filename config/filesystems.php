@@ -44,10 +44,11 @@ return [
             'throw' => false,
         ],
 
-        'photo' => [
+        'dir_image' => [
           'driver' => 'local',
-          'root' => storage_path('app/public/image/article'),
-          'url' => env('APP_URL').'/storage',
+          'root' => public_path('image'),
+          'url' => env('APP_URL').'/public',
+          'visibility' => 'public',
           'throw' => false,
         ],
 
