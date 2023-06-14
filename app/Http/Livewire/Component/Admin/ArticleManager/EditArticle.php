@@ -65,9 +65,7 @@ class EditArticle extends Component
         // Logic Handle Update Data
         try {
             // Upload File
-            if ($this->inputThumbnail->storeAS('photo', $filename)) :
-                # code...
-            endif;
+            $this->inputThumbnail->storeAS('article', $filename, 'dir_image');
 
             // Process updated data
             $this->article->save();
