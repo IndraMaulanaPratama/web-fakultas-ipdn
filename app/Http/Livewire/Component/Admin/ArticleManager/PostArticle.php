@@ -58,8 +58,9 @@ class PostArticle extends Component
         try {
             // Upload File
             $this->inputThumbnail->storeAS(
-                'photo',
-                $filename
+                'article',
+                $filename,
+                'dir_image'
             );
 
             // Insert to database
@@ -68,10 +69,11 @@ class PostArticle extends Component
             // Create Success Session Alert
             session()->flash('success', 'Artikel yang anda buat berhasil tersimpan didalam system');
         } catch (\Throwable $th) {
-            // Create Error Session Alert
-            // session()->flash('error', 'Artikel yang anda buat tidak dapat tersimpan kedalam system, silahkan hubungi system administrator');
+            // session()->flash('error', $th->getMessage());
 
-            session()->flash('error', $th->getMessage());
+            // Create Error Session Alert
+            session()->flash('error', 'Artikel yang anda buat tidak dapat tersimpan kedalam system, silahkan hubungi system administrator');
+
         }
 
         $this->clearForm();
