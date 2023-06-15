@@ -98,10 +98,21 @@ class SubmenuSeeder extends Seeder
 
 
           /** Setting Area */
-          // Setting -> Testimoni
+          // Setting -> General
           [
             'SUBMENU_MENU' => 4,
             'SUBMENU_ORDER' => 1,
+            'SUBMENU_NAME' => 'General',
+            'SUBMENU_URL' => 'setting/general',
+
+            'SUBMENU_CREATED_AT' => Carbon::now('Asia/Jakarta'),
+            'SUBMENU_CREATED_BY' => 1,
+          ],
+
+          // Setting -> Testimoni
+          [
+            'SUBMENU_MENU' => 4,
+            'SUBMENU_ORDER' => 2,
             'SUBMENU_NAME' => 'Testimoni',
             'SUBMENU_URL' => 'setting/testimoni',
 
@@ -112,7 +123,7 @@ class SubmenuSeeder extends Seeder
           // Setting -> Contact
           [
             'SUBMENU_MENU' => 4,
-            'SUBMENU_ORDER' => 2,
+            'SUBMENU_ORDER' => 3,
             'SUBMENU_NAME' => 'Contact',
             'SUBMENU_URL' => 'setting/contact',
 
