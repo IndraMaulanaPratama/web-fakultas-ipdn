@@ -1,83 +1,24 @@
 <div class="grid lg:mx-20 max-lg:grid-cols-1 lg:grid-cols-4 gap-5">
 
     {{-- Berita --}}
-    <div class="bg-base-100 grid lg:col-span-3 mx-5 max-lg:mx-4 justify-center rounded-md shadow-md">
+    <div class="bg-base-100 grid lg:col-span-3 mx-5 max-lg:mx-4 rounded-md shadow-md">
 
         {{-- Image Header --}}
         <figure>
-            <img src="{{ asset('image/berita/berita-papua-1.JPG') }}" alt="" class="rounded-md">
+            <img src="{{ asset('image/article') . '/' . $data->ARTICLE_THUMBNAIL }}" alt="" class="rounded-md">
         </figure>
 
         <div class="p-8">
             {{-- Title --}}
-            <p class="font-bold text-xl my-5">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <p class="font-bold text-xl my-5">
+                {{ $data->ARTICLE_TITLE }}
+            </p>
 
             {{-- Berita --}}
-            {{-- Paragraf 1 --}}
-            <p class="text-justify indent-5 my-3">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odit consequuntur impedit repellat esse quasi
-                fuga harum officia placeat accusamus a quos, laudantium aliquid numquam delectus expedita maxime! Alias,
-                dolore possimus.
-                Alias eaque deserunt pariatur? Quam provident earum accusantium ut suscipit saepe est eum? Laborum, non?
-                Quos labore voluptatum in, culpa repellendus incidunt aut, veniam consequuntur atque sed obcaecati,
-                tenetur laborum.
-                Soluta tempore repellendus ea eum aut quae minima! Veniam hic iure rerum assumenda obcaecati voluptates,
-                cupiditate eos sequi optio nisi minima molestiae sit exercitationem. Amet aperiam sed magnam. Aliquid,
-                iusto.
-                Repudiandae temporibus ut repellat doloribus accusamus optio aperiam quisquam cumque dolores placeat,
-                fugit, ad maiores explicabo aspernatur? Quisquam, laudantium commodi assumenda corrupti, inventore dicta
-                aliquam corporis aspernatur ratione sed esse.
-                Laboriosam magnam dolores perferendis. Voluptates voluptatem odio doloremque sapiente dicta mollitia
-                iusto nihil ut harum assumenda nemo alias, ea velit recusandae a sit dolorem! Quidem nihil aspernatur
-                reprehenderit aliquid debitis.
-                Soluta possimus ullam quo officiis, fuga ratione ipsam autem rem ex veniam similique nihil? Amet, vitae
-                fugit. Repellendus, unde reiciendis. Totam magni hic recusandae consequuntur officia a quod deleniti
-                temporibus!
-                Neque dolor distinctio consequatur aut beatae eligendi voluptatibus nulla expedita! Recusandae doloribus
-                repellendus corporis placeat voluptatem, tenetur totam pariatur minima aperiam debitis asperiores harum
-                quos cum voluptas eveniet! Quae, repellat!
-                Ducimus est, impedit quae ullam earum repellat incidunt quaerat, perferendis eum sint similique.
-                Accusamus eos hic ex quidem asperiores ratione tenetur necessitatibus, excepturi nisi itaque. Recusandae
-                quae dignissimos ipsum similique?
-                Corporis sit magni animi cumque eius, error ipsa, et amet aliquid cum nesciunt reiciendis assumenda
-                ullam fugiat rem inventore eveniet autem unde atque harum veniam quas sapiente facilis. Ex, animi.
-                Eaque ipsum explicabo numquam dolor at dignissimos officiis a fugiat nisi reprehenderit pariatur omnis
-                tenetur accusantium inventore delectus eos accusamus nihil, beatae nobis blanditiis. Ratione vel vitae
-                debitis ducimus dolores?
-            </p>
+            <div class="text-justify indent-4 leading-relaxed tracking-normal line-clamp-4">
+                {!! $data->ARTICLE_CONTENT !!}
+            </div>
 
-            {{-- Paragraf 2 --}}
-            <p class="text-justify indent-5 my-3">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odit consequuntur impedit repellat esse quasi
-                fuga harum officia placeat accusamus a quos, laudantium aliquid numquam delectus expedita maxime! Alias,
-                dolore possimus.
-                Alias eaque deserunt pariatur? Quam provident earum accusantium ut suscipit saepe est eum? Laborum, non?
-                Quos labore voluptatum in, culpa repellendus incidunt aut, veniam consequuntur atque sed obcaecati,
-                tenetur laborum.
-                Soluta tempore repellendus ea eum aut quae minima! Veniam hic iure rerum assumenda obcaecati voluptates,
-                cupiditate eos sequi optio nisi minima molestiae sit exercitationem. Amet aperiam sed magnam. Aliquid,
-                iusto.
-                Repudiandae temporibus ut repellat doloribus accusamus optio aperiam quisquam cumque dolores placeat,
-                fugit, ad maiores explicabo aspernatur? Quisquam, laudantium commodi assumenda corrupti, inventore dicta
-                aliquam corporis aspernatur ratione sed esse.
-                Laboriosam magnam dolores perferendis. Voluptates voluptatem odio doloremque sapiente dicta mollitia
-                iusto nihil ut harum assumenda nemo alias, ea velit recusandae a sit dolorem! Quidem nihil aspernatur
-                reprehenderit aliquid debitis.
-                Soluta possimus ullam quo officiis, fuga ratione ipsam autem rem ex veniam similique nihil? Amet, vitae
-                fugit. Repellendus, unde reiciendis. Totam magni hic recusandae consequuntur officia a quod deleniti
-                temporibus!
-                Neque dolor distinctio consequatur aut beatae eligendi voluptatibus nulla expedita! Recusandae doloribus
-                repellendus corporis placeat voluptatem, tenetur totam pariatur minima aperiam debitis asperiores harum
-                quos cum voluptas eveniet! Quae, repellat!
-                Ducimus est, impedit quae ullam earum repellat incidunt quaerat, perferendis eum sint similique.
-                Accusamus eos hic ex quidem asperiores ratione tenetur necessitatibus, excepturi nisi itaque. Recusandae
-                quae dignissimos ipsum similique?
-                Corporis sit magni animi cumque eius, error ipsa, et amet aliquid cum nesciunt reiciendis assumenda
-                ullam fugiat rem inventore eveniet autem unde atque harum veniam quas sapiente facilis. Ex, animi.
-                Eaque ipsum explicabo numquam dolor at dignissimos officiis a fugiat nisi reprehenderit pariatur omnis
-                tenetur accusantium inventore delectus eos accusamus nihil, beatae nobis blanditiis. Ratione vel vitae
-                debitis ducimus dolores?
-            </p>
 
         </div>
 
