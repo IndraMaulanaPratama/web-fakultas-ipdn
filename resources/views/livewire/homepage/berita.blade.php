@@ -17,7 +17,7 @@
 
                     {{-- Title Article --}}
                     <h2 class="card-title">
-                        <a href="{{ URL::to('/berita/idberita') }}" class="lik link-hover link-neutral">
+                        <a href="{{ URL::to('post'). '/'. $item->ARTICLE_ID }}" class="lik link-hover link-neutral">
                             {{ $item->ARTICLE_TITLE }}
                         </a>
                     </h2>
@@ -45,7 +45,7 @@
 
                         {{-- Date Time Post --}}
                         <div class="badge badge-outline">
-                            {{ date('d-m-Y', strtotime($item->ARTICLE_UPDATED_AT)) }}
+                            {{ date('d-F-Y', strtotime($item->ARTICLE_UPDATED_AT)) }}
                         </div>
                     </div>
                 </div>
