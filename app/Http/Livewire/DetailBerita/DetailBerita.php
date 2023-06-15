@@ -3,17 +3,20 @@
 namespace App\Http\Livewire\DetailBerita;
 
 use App\Models\article;
+use App\Models\category;
 use Livewire\Component;
 
 class DetailBerita extends Component
 {
     public $article;
+    public $category;
 
     public function mount($id)
     {
         $this->article = article::with('user')->nullDeleted()
         ->find($id);
 
+        $this->category = category::nullDeleted()->take(7)->get();
     }
 
     public function render()
@@ -26,6 +29,7 @@ class DetailBerita extends Component
             'livewire.detail-berita.detail-berita',
             [
               'data' => $this->article,
+              'category' => $this->category,
             ]
         )
         ->extends('layouts.public', $params)
