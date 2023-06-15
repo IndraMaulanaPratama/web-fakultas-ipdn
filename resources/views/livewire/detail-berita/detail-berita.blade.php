@@ -32,48 +32,23 @@
 
         {{-- List Category --}}
         <div class="flex flex-col border border-base-200 border-opacity-75 shadow-md rounded-md p-5">
-            <p class="flex justify-center font-medium">Daftar Kategori</p>
+            <p class="flex justify-center font-medium"> {{ __('Daftar Kategori') }} </p>
 
             <div class="divider"></div>
 
             <ul class="list">
-                <li class="mb-2">
-                    <a href="{{ URL::to('kategori/kategori-pertama') }}" class="link link-hover link-neutral">kategori
-                        Pertama</a>
-                </li>
-
-                <li class="mb-2">
-                    <a href="{{ URL::to('kategori/kategori-kedua') }}" class="link link-hover link-neutral">kategori
-                        Kedua</a>
-                </li>
-
-                <li class="mb-2">
-                    <a href="{{ URL::to('kategori/kategori-ketiga') }}" class="link link-hover link-neutral">kategori
-                        Ketiga</a>
-                </li>
-
-                <li class="mb-2">
-                    <a href="{{ URL::to('kategori/kategori-keempat') }}" class="link link-hover link-neutral">kategori
-                        Keempat</a>
-                </li>
-
-                <li class="mb-2">
-                    <a href="{{ URL::to('kategori/kategori-kelima') }}" class="link link-hover link-neutral">kategori
-                        Kelima</a>
-                </li>
-
-                <li class="mb-2">
-                    <a href="{{ URL::to('kategori/kategori-keenam') }}" class="link link-hover link-neutral">kategori
-                        Keenam</a>
-                </li>
-
-                <li class="mb-2">
-                    <a href="{{ URL::to('kategori/kategori-ketujuh') }}" class="link link-hover link-neutral">kategori
-                        Ketujuh</a>
-                </li>
+                @foreach ($category as $item)
+                    <li class="mb-2">
+                        <a href="{{ URL::to('kategori/'). '/'. $item->CATEGORY_ID }}" class="link link-hover link-neutral">
+                            {{ __($item->CATEGORY_NAME) }}
+                        </a>
+                    </li>
+                @endforeach
 
                 <li class="mb-2 mt-5">
-                    <a href="{{ URL::to('kategori/') }}" class="link link-hover link-neutral">Lihat semua Kategori</a>
+                    <a href="{{ URL::to('kategori/') }}" class="link link-hover link-neutral">
+                        {{ __('Lihat semua Kategori') }}
+                    </a>
                 </li>
 
 
