@@ -39,7 +39,8 @@
             <ul class="list">
                 @foreach ($category as $item)
                     <li class="mb-2">
-                        <a href="{{ URL::to('kategori/'). '/'. $item->CATEGORY_ID }}" class="link link-hover link-neutral">
+                        <a href="{{ URL::to('kategori/') . '/' . $item->CATEGORY_ID }}"
+                            class="link link-hover link-neutral">
                             {{ __($item->CATEGORY_NAME) }}
                         </a>
                     </li>
@@ -56,29 +57,18 @@
         </div>
 
         <div class="divider mb-7 mt-14">
-            <p class="font-thin">Berita Terkait</p>
+            <p class="font-thin"> {{ __('Berita Terkait') }} </p>
         </div>
 
         {{-- Berita Terkait --}}
         <ul class="list list-disc list-outside">
-            <li class="mb-4">
-                <a href="{{ URL::to('berita/Berita-pertama') }}" class="link link-hover link-neutral">Ini Adalah Berita
-                    Terkait yang
-                    pertama</a>
-            </li>
-
-            <li class="mb-4">
-                <a href="{{ URL::to('berita/Berita-kedua') }}" class="link link-hover link-neutral">Ini Adalah Berita
-                    Terkait yang
-                    kedua</a>
-            </li>
-
-            <li class="mb-4">
-                <a href="{{ URL::to('berita/Berita-ketiga') }}" class="link link-hover link-neutral">Ini Adalah Berita
-                    Terkait yang
-                    ketiga</a>
-
-            </li>
+            @foreach ($recent_article as $item)
+                <li class="mb-4">
+                    <a href="{{ URL::to('post' . '/' . $item->ID) }}" class="link link-hover link-neutral">
+                        {{ __($item->TITLE) }}
+                    </a>
+                </li>
+            @endforeach
         </ul>
         {{-- End Berita Terbaru --}}
 
