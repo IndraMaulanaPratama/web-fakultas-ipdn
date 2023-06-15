@@ -9,6 +9,7 @@ use Livewire\Component;
 class DetailBerita extends Component
 {
     public $article;
+    public $recentArticle;
     public $category;
 
     public function mount($id)
@@ -17,6 +18,14 @@ class DetailBerita extends Component
         ->find($id);
 
         $this->category = category::nullDeleted()->take(7)->get();
+
+        $this->recentArticle = article::nullDeleted()->take(10)
+        ->orderBy('ID', 'DESC')->get(
+            [
+            'ARTICLE_ID AS ID',
+            'ARTICLE_TITLE AS TITLE'
+            ]
+        );
     }
 
     public function render()
@@ -29,6 +38,7 @@ class DetailBerita extends Component
             'livewire.detail-berita.detail-berita',
             [
               'data' => $this->article,
+              'recent_article' => $this->recentArticle,
               'category' => $this->category,
             ]
         )
