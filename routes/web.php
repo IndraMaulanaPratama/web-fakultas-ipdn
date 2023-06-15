@@ -36,12 +36,12 @@ Route::middleware('guest')->group(function () {
 
     // Public Detail Berita
     Route::get('/post/{id}', DetailBerita::class)->name('detail-berita');
-    // TODO:: Lanjutkan Detail Article Menggunakan Database
+
     // Public List Kategori
     Route::get('/kategori', ListCategory::class)->name('list-category');
 
     // Public List Berita Berdasarkan Kategori
-    Route::get('/kategori/{idCategory}', CategoryListBerita::class)->name('list-berita-by-kategori');
+    Route::get('/kategori/{categoryId}', CategoryListBerita::class)->name('list-berita-by-kategori');
 
     // Login Page
     Route::get('/ipdn-kampus-daerah/login', Login::class)->name('login');
