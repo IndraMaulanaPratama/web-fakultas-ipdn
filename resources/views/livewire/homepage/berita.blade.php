@@ -30,7 +30,7 @@
                         {!! Str::substr($item->ARTICLE_CONTENT, 0, 125) !!}
 
                         {{-- Call to Action See Detail Article --}}
-                        <a href="{{ URL::to('berita/idBerita') }}"
+                        <a href="{{ URL::to('post/'. $item->ARTICLE_ID) }}"
                             class="link text-red-600 hover:text-orange-500 active:text-red-800">
                             {{ __('Baca Selengkapnya') }}
                         </a>
