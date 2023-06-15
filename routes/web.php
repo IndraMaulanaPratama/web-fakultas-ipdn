@@ -35,8 +35,8 @@ Route::middleware('guest')->group(function () {
     Route::get('/berita', ListBerita::class)->name('list-berita');
 
     // Public Detail Berita
-    Route::get('/berita/{id}', DetailBerita::class)->name('detail-berita');
-
+    Route::get('/post/{id}', DetailBerita::class)->name('detail-berita');
+    // TODO:: Lanjutkan Detail Article Menggunakan Database
     // Public List Kategori
     Route::get('/kategori', ListCategory::class)->name('list-category');
 
