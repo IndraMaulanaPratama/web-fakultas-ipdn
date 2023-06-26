@@ -56,8 +56,20 @@
 
                         {{-- Foreword from Director --}}
                         <div class="form-group">
-                            <label for="inputHymne"> {{ __('Nama Direktur Kampus Regional') }} </label>
+                            <label for="inputForeword"> {{ __('Nama Direktur Kampus Regional') }} </label>
                             <textarea wire:model='inputForeword' class='form-control' rows="10"></textarea>
+                        </div>
+
+                        {{-- URL Mars --}}
+                        <div class="form-group">
+                            <label for="inputMars"> {{ __('Tautan URL Mars IPDN') }} </label>
+                            <input type="text" wire:model='inputMars' class='form-control'>
+                        </div>
+
+                        {{-- URL Mars --}}
+                        <div class="form-group">
+                            <label for="inputHymne"> {{ __('Tautan URL Hymne IPDN') }} </label>
+                            <input type="text" wire:model='inputHymne' class='form-control'>
                         </div>
 
                         <button type="submit" class="btn btn-primary"> {{ __('Simpan Perubahan') }} </button>
@@ -72,6 +84,7 @@
 
                 {{-- Card Header --}}
                 <div class="card-header">
+                    <strong class="card-title">{{ __('Form Foto Direktur') }}</strong>
                     <a class="float-right small text-muted" href="#!"> &nbsp; </a>
                 </div>
 
