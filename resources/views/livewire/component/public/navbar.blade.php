@@ -27,16 +27,20 @@
                             <li><a>Visi Misi IPDN</a></li>
                         </ul>
                     </li>
-                    <li><a href="{{ URL::to('berita/')}}">Berita</a></li>
+                    <li><a href="{{ URL::to('berita/') }}">Berita</a></li>
                     <li><a>CAT</a></li>
                     <li><a href="https://spcp.ipdn.ac.id/" target="tab">SPCP IPDN</a></li>
-                    </ul>
+                </ul>
             </div>
 
             {{-- Title Navbar --}}
-            <img src="https://kalbar.ipdn.ac.id/wp-content/uploads/2022/06/photo_2022-06-03_20-02-57.png"
+            <img src="https://ipdn.ac.id/assets/img/ipdn.png"
                 class="max-w-sm max-h-16">
-            <a class="btn btn-ghost normal-case text-xl max-md:text-lg ">IPDN KAMPUS PAPUA</a>
+            <a class="btn btn-ghost text-md text-left max-md:text-sm ">
+                {{ __('IPDN') }} <br />
+                {{ __('KAMPUS') }} <br />
+                {{ Str::upper($setting->SETTING_REGIONAL) }}
+            </a>
         </div>
 
         {{-- Menu Item --}}
@@ -61,11 +65,11 @@
                 </li>
 
                 {{-- Item 3 --}}
-                <li><a href="{{ URL::to('/berita')}}">Berita</a></li>
+                <li><a href="{{ URL::to('/berita') }}">Berita</a></li>
                 <li><a>CAT</a></li>
                 <li><a href="https://spcp.ipdn.ac.id/" target="tab">SPCP IPDN</a></li>
             </ul>
-    </ul>
+            </ul>
         </div>
 
         {{-- Menu Kanan --}}
