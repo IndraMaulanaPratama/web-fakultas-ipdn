@@ -1,4 +1,4 @@
-import "./bootstrap";
+import "./bootstrap.js";
 import "../css/app.css";
 // import { livewire_hot_reload } from "livewire-hot-reload";
 
