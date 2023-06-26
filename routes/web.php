@@ -3,6 +3,7 @@
 use App\Http\Livewire\Admin\AccountManager;
 use App\Http\Livewire\Admin\CategoryManager;
 use App\Http\Livewire\Admin\Dashboard;
+use App\Http\Livewire\Admin\Setting\Content;
 use App\Http\Livewire\Category\ListBerita as CategoryListBerita;
 use App\Http\Livewire\Category\ListCategory;
 use App\Http\Livewire\Component\Admin\ArticleManager\EditArticle;
@@ -74,6 +75,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     // Trash Data Postingan & Category
     Route::get('/postingan/trash/', TrashData::class);
+
+    // General Setting
+    Route::get('/setting/general', Content::class);
 
 });
 
