@@ -2,12 +2,21 @@
 
 namespace App\Http\Livewire\Homepage;
 
+use App\Models\setting;
 use Livewire\Component;
 
 class Direktur extends Component
 {
+    public $setting;
+
+    public function mount()
+    {
+        $this->setting = setting::find('1');
+    }
+
     public function render()
     {
-        return view('livewire.homepage.direktur');
+        $data = ['setting' => $this->setting];
+        return view('livewire.homepage.direktur', $data);
     }
 }
