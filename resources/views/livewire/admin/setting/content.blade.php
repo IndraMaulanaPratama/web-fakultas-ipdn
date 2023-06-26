@@ -32,71 +32,71 @@
     <div class="row">
         {{-- Form Left Side --}}
         <div class="col-md-6">
-            <div class="card shadow">
-                <div class="card-header">
-                    <strong class="card-title">{{ __('Form Pengaturan General') }}</strong>
-                    <a class="float-right small text-muted" href="#!"> &nbsp; </a>
-                </div>
-                <div class="card-body my-n2">
-                    {{-- Nama Regional --}}
-                    <div class="form-group">
-                        <label for="inputRegional">{{ __('Nama Regional Kampus Daerah') }}</label>
-                        <input type="text" class='form-control file-input' wire:model='inputRegional'
-                            placeholder="Contoh: Jatinangor">
+            <form wire:submit.prevent='SettingGeneral'>
+                <div class="card shadow">
+                    {{-- Card Header --}}
+                    <div class="card-header">
+                        <strong class="card-title">{{ __('Form Pengaturan General') }}</strong>
+                        <a class="float-right small text-muted" href="#!"> &nbsp; </a>
                     </div>
 
-                    {{-- Header Application --}}
-                    <div class="form-group">
-                        <label for="inputHymne"> {{ __('Gambar Header Aplikasi') }} </label>
-                        <div class="row">
-                            <div class="col-md-10">
-                                <input type="file" class='form-control' wire:model='inputHeader'>
-                            </div>
-
-                            <div class="col-md-2">
-                                <button class='btn btn-primary form-control'>
-                                    <span class="fe fe-14 fe-upload"></span>
-                                    {{ __('Unggah') }}
-                                </button>
-                            </div>
+                    {{-- Card Body --}}
+                    <div class="card-body my-n2">
+                        {{-- Nama Regional --}}
+                        <div class="form-group">
+                            <label for="inputRegional">{{ __('Nama Regional Kampus Daerah') }}</label>
+                            <input type="text" class='form-control file-input' wire:model='inputRegional'>
                         </div>
-                    </div>
 
+                        {{-- Director Campus Regional Name --}}
+                        <div class="form-group">
+                            <label for="inputHymne"> {{ __('Nama Direktur Kampus Regional') }} </label>
+                            <input type="text" class='form-control' wire:model='inputDirectorName'>
+                        </div>
+
+                        {{-- Foreword from Director --}}
+                        <div class="form-group">
+                            <label for="inputHymne"> {{ __('Nama Direktur Kampus Regional') }} </label>
+                            <textarea wire:model='inputForeword' class='form-control' rows="10"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary"> {{ __('Simpan Perubahan') }} </button>
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
 
         {{-- Form Right Side --}}
         <div class="col-md-6">
             <div class="card shadow">
+
+                {{-- Card Header --}}
                 <div class="card-header">
-                    {{-- <strong class="card-title">{{ __('Form Pengaturan General') }}</strong> --}}
                     <a class="float-right small text-muted" href="#!"> &nbsp; </a>
                 </div>
+
+                {{-- Card Body --}}
                 <div class="card-body my-n2">
                     {{-- Nama Regional --}}
                     <div class="form-group">
-                        <label for="inputRegional">Nama Regional Kampus Daerah</label>
-                        <input type="text" class='form-control' wire:model='inputRegional'
-                            placeholder="Contoh: Jatinangor">
-                    </div>
+                        <label for="inputPhotoDirector"> {{ __('Foto Directur') }} </label>
+                        <div class="row">
 
-                    {{-- URL Mars --}}
-                    <div class="form-group">
-                        <label for="inputMars">Tautan Video Mars</label>
-                        <input type="text" class='form-control' wire:model='inputMars' placeholder="https://">
-                    </div>
+                            <div class="col-md-9">
+                                <input type="file" wire:model='inputPhotoDirector' class='form-control file-input'>
+                            </div>
 
-                    {{-- URL Hymne --}}
-                    <div class="form-group">
-                        <label for="inputHymne">Tautan Video Hymne</label>
-                        <input type="text" class='form-control' wire:model='inputHymne' placeholder="https://">
+                            <div class="col-md-3">
+                                <button class='btn btn-primary form-control '>
+                                    <span class='fe fe-upload'></span>
+                                    {{ __('Unggah') }}
+                                </button>
+                            </div>
+                        </div>
                     </div>
-
                 </div>
             </div>
         </div>
-
     </div>
 
 </div>
