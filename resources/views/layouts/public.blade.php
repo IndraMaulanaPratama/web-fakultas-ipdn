@@ -5,6 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    {{-- Favicon --}}
+    <link href="https://ipdn.ac.id/assets/img/ipdn.png" rel="shortcut icon">
+    <link href="https://ipdn.ac.id/assets/img/ipdn.png" rel="apple-touch-icon">
+
     <title>{{ $params['title'] }}</title>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
