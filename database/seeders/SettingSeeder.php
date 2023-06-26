@@ -24,8 +24,8 @@ class SettingSeeder extends Seeder
 
           'SETTING_DIRECTOR_MESSAGE' => 'Selamat Datang di Portal Institut Pemerintahan Dalam Negeri Kampus Daerah Papua. Lembaga Pendidikan Penyedia Calon Birokrat Pemerintahan yang Profesional.',
 
-          'SETTING_URL_MARS' => 'https://youtu.be/Ne-SYQ7GlZw',
-          'SETTING_URL_HYMNE' => 'https://youtu.be/7Xro3qZieVQ',
+          'SETTING_URL_MARS' => 'https://www.youtube.com/embed/Ne-SYQ7GlZw',
+          'SETTING_URL_HYMNE' => 'https://www.youtube.com/embed/7Xro3qZieVQ',
 
           'SETTING_CREATED_AT' => Carbon::now('Asia/Jakarta'),
           'SETTING_CREATED_BY' => 1,
