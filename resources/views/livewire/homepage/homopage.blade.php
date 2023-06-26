@@ -10,8 +10,9 @@
             <div class="">
                 {{-- Header Section Berita --}}
                 <div class="grid justify-center mb-4">
-                    <p class="text-lg font-semibold font-serif text-slate-400 rounded-xl">Berita Terbaru Kampus Daerah
-                        Papua</p>
+                    <p class="text-lg font-semibold font-serif text-slate-400 rounded-xl">
+                        {{ __('Berita Terbaru Kampus Daerah ') . $setting->SETTING_REGIONAL }}
+                    </p>
                 </div>
 
                 @livewire('homepage.berita')
@@ -47,7 +48,9 @@
             <div class="">
                 {{-- Header Section Berita --}}
                 <div class="flex justify-center mb-4">
-                    <p class="text-lg font-semibold font-serif text-slate-400 rounded-xl">System Pembelajaran IPDN</p>
+                    <p class="text-lg font-semibold font-serif text-slate-400 rounded-xl">
+                        {{ __('System Pembelajaran IPDN') }}
+                    </p>
                 </div>
 
                 @livewire('homepage.apps-ipdn')
@@ -81,7 +84,9 @@
             <div class="">
                 {{-- Header Section Berita --}}
                 <div class="flex justify-center mb-4">
-                    <p class="text-lg font-semibold font-serif text-slate-400 rounded-xl">Real Testimonial</p>
+                    <p class="text-lg font-semibold font-serif text-slate-400 rounded-xl">
+                        {{ __('Real Testimonial') }}
+                    </p>
                 </div>
 
                 @livewire('homepage.testimoni')
