@@ -19,6 +19,7 @@ class SettingSeeder extends Seeder
           'SETTING_FAVICON' => 'favicon.ico',
           'SETTING_LOGO' => 'logo.png',
           'SETTING_HEADER' => 'header.jpg',
+          'SETTING_DIRECTOR_NAME' => 'Prof. Dr. H. Rama Wirahma, S.T., M.T.',
           'SETTING_DIRECTOR_IMAGE' => 'default_director.png',
 
           'SETTING_DIRECTOR_MESSAGE' => 'Selamat Datang di Portal Institut Pemerintahan Dalam Negeri Kampus Daerah Papua. Lembaga Pendidikan Penyedia Calon Birokrat Pemerintahan yang Profesional.',
