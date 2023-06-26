@@ -17,6 +17,7 @@ return new class () extends Migration {
             $table->string('SETTING_FAVICON', 50);
             $table->string('SETTING_LOGO', 50);
             $table->string('SETTING_HEADER', 50);
+            $table->string('SETTING_DIRECTOR_NAME', 150);
             $table->string('SETTING_DIRECTOR_IMAGE', 50);
             $table->string('SETTING_DIRECTOR_MESSAGE', 255);
             $table->text('SETTING_URL_MARS');
