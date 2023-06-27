@@ -28,6 +28,14 @@ class Testimoni extends Component
         $this->inputTestimoni = $testimoni->TESTIMONI_CONTENT;
     }
 
+    public function ClearForm()
+    {
+        $this->inputId = null;
+        $this->inputName = null;
+        $this->inputBatch = null;
+        $this->inputTestimoni = null;
+    }
+
     public function render()
     {
         $params = [
