@@ -4,6 +4,7 @@ use App\Http\Livewire\Admin\AccountManager;
 use App\Http\Livewire\Admin\CategoryManager;
 use App\Http\Livewire\Admin\Dashboard;
 use App\Http\Livewire\Admin\Setting\Content;
+use App\Http\Livewire\Admin\Setting\Testimoni;
 use App\Http\Livewire\Category\ListBerita as CategoryListBerita;
 use App\Http\Livewire\Category\ListCategory;
 use App\Http\Livewire\Component\Admin\ArticleManager\EditArticle;
@@ -78,6 +79,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     // General Setting
     Route::get('/setting/general', Content::class);
+
+    // Testimoni Setting
+    Route::get('/setting/testimoni', Testimoni::class);
 
 });
 
