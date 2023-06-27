@@ -10,6 +10,7 @@ class testimoni extends Model
     use HasFactory;
 
     protected $table = 'TESTIMONI';
+    protected $primaryKey = 'TESTIMONI_ID';
 
     protected $fillable = [
       'TESTIMONI_USERNAME',
