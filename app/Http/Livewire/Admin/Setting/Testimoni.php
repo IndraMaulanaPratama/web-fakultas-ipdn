@@ -13,6 +13,7 @@ class Testimoni extends Component
     public $inputBatch;
     public $inputTestimoni;
 
+    protected $listeners = ['refreshComponent' => '$refresh'];
 
     public function mount()
     {
@@ -34,6 +35,24 @@ class Testimoni extends Component
         $this->inputName = null;
         $this->inputBatch = null;
         $this->inputTestimoni = null;
+    }
+
+    public function ProcessUpdate()
+    {
+        $dataTestimoni = ModelsTestimoni::find($this->inputId);
+
+        try {
+            $dataTestimoni->TESTIMONI_USERNAME = $this->inputName;
+            $dataTestimoni->TESTIMONI_BATCH = $this->inputBatch;
+            $dataTestimoni->TESTIMONI_CONTENT = $this->inputTestimoni;
+            $dataTestimoni->save();
+
+            $this->ClearForm();
+            $this->emit('refreshComponent');
+            session()->flash('success', 'Data Testimoni Berhasil Perbarui');
+        } catch (\Throwable $th) {
+            session()->flash('error', $th->getMessage());
+        }
     }
 
     public function render()
