@@ -21,7 +21,7 @@
                 </a>
             </div>
 
-            <ul class="navbar-nav flex-fill w-100 mb-2">
+            <ul class="navbar-nav flex-row w-100 mb-2">
                 <li class="nav-item dropdown">
                     <a href="{{ route('home') }}" class="nav-link">
                         <i class="fe fe-home fe-16"></i>
@@ -31,7 +31,7 @@
             </ul>
 
             @foreach ($menu as $item)
-                <ul class="navbar-nav flex-fill w-100 mb-2">
+                <ul class="navbar-nav flex-row w-100 mb-2">
                     <li class="nav-item dropdown">
                         <a href="#{{ $item->MENU_NAME }}" data-toggle="collapse" aria-expanded="false"
                             class="dropdown-toggle nav-link">

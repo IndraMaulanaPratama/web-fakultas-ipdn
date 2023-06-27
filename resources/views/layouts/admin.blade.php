@@ -34,7 +34,7 @@
     <link rel="stylesheet" href={{ url('build/css/app-dark.css') }} id="darkTheme" disabled>
 
     {{-- Vite Plugin --}}
-    @vite(['/resources/css/app.css', '/resources/js/app.js'])
+    @vite(['resources/js/app.js', '/resources/css/app.css'])
 
     {{-- Livewire Style --}}
     @livewireStyles
