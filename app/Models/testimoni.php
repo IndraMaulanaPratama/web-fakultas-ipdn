@@ -9,6 +9,8 @@ class testimoni extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     protected $table = 'TESTIMONI';
     protected $primaryKey = 'TESTIMONI_ID';
 
