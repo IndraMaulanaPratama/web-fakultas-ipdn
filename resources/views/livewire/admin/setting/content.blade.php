@@ -56,7 +56,7 @@
 
                         {{-- Foreword from Director --}}
                         <div class="form-group">
-                            <label for="inputForeword"> {{ __('Nama Direktur Kampus Regional') }} </label>
+                            <label for="inputForeword"> {{ __('Pesan Sambutan Direktur') }} </label>
                             <textarea wire:model='inputForeword' class='form-control' rows="10"></textarea>
                         </div>
 
@@ -72,7 +72,7 @@
                             <input type="text" wire:model='inputHymne' class='form-control'>
                         </div>
 
-                        <button type="submit" class="btn btn-primary"> {{ __('Simpan Perubahan') }} </button>
+                        <button type="submit" class="btn btn-info"> {{ __('Simpan Perubahan') }} </button>
                     </div>
                 </div>
             </form>
@@ -100,7 +100,7 @@
                             </div>
 
                             <div class="col-md-3">
-                                <button class='btn btn-primary form-control '>
+                                <button class='btn btn-info form-control '>
                                     <span class='fe fe-upload'></span>
                                     {{ __('Unggah') }}
                                 </button>
