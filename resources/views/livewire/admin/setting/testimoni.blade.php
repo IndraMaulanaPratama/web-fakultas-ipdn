@@ -75,7 +75,7 @@
 
                         &nbsp;
 
-                        <button type="submit" class="btn btn-accent" wire:click='ClearForm'>
+                        <button type="button" class="btn btn-accent" wire:click='ClearForm'>
                             {{ __('Batalkan') }}
                         </button>
                     </div>
