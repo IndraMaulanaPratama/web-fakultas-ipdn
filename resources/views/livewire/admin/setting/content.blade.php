@@ -3,12 +3,10 @@
 
     {{-- Alert for success feedback from backend --}}
     @if (session()->has('success'))
-        <div class="alert alert-primary shadow-lg alert-dismissible fade show" role="alert"">
+        <div class="alert alert-primary shadow-lg alert-dismissible fade show" role="alert">
             <i class="fe fe-check-circle"></i>
-
-            {{ session('success') }}
-
             <span>
+                {{ session('success') }}
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
