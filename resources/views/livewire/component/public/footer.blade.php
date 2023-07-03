@@ -50,7 +50,7 @@
                 <div class="max-lg:my-10">
                     <iframe
                         src="{{ $data->CONTACT_MAPS }}"
-                        style="border:0;" class="sm:w-[480px] sm:h-[120px] md:w-[480px] md:h-[480px] rounded-md"
+                        style="border:0;" class="sm:w-[480px] sm:h-[120px] md:w-[480px] md:h-[240px] rounded-md"
                         allowfullscreen="" referrerpolicy="no-referrer-when-downgrade">
                     </iframe>
                 </div>
