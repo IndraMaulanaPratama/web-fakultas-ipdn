@@ -18,14 +18,28 @@
                             <div class="col-md-6">
                                 {{-- Input Instagram --}}
                                 <div class="form-group">
-                                    <label for="InputInstagram"> {{ __('Tautan Akun Instagram') }} </label>
-                                    <input type="text" class="form-control" wire:model='inputInstagram'>
+                                    <label for="inputInstagram"> {{ __('URL Sosial Media Instagram') }} </label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"
+                                                id="inputInstagram">https://www.instagram.com/</span>
+                                        </div>
+                                        <input type="text" class="form-control" id="basic-url"
+                                            aria-describedby="inputInstagram" wire:model='inputInstagram'>
+                                    </div>
                                 </div>
 
                                 {{-- Input Email --}}
                                 <div class="form-group">
                                     <label for="InputEmail"> {{ __('Alamat Surat Elektronik (Email)') }} </label>
-                                    <input type="email" class="form-control" wire:model='inputEmail'>
+
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" aria-label="Recipient's username"
+                                            aria-describedby="inputEmail" wire:model='inputEmail'>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text" id="inputEmail">@ipdn.ac.id</span>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 {{-- Input Telephone --}}
@@ -58,7 +72,8 @@
 
                                 {{-- Buttton Submit --}}
                                 &nbsp;
-                                <button type="submit" class="btn btn-lg btn-secondary form-control">Simpan Perubahan</button>
+                                <button type="submit" class="btn btn-lg btn-secondary form-control">Simpan
+                                    Perubahan</button>
                             </div>
                         </div>
 
