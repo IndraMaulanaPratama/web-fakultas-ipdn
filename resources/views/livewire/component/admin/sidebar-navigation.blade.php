@@ -8,8 +8,8 @@
         <nav class="vertnav navbar navbar-light">
             <!-- nav bar -->
             <div class="w-100 mb-4 d-flex">
-                <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="./index.html">
-                    <svg version="1.1" id="logo" class="navbar-brand-img brand-sm"
+                <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="{{ url('/') }}">
+                    {{-- <svg version="1.1" id="logo" class="navbar-brand-img brand-sm"
                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
                         y="0px" viewBox="0 0 120 120" xml:space="preserve">
                         <g>
@@ -17,7 +17,8 @@
                             <polygon class="st0" points="96,69 33,69 42,51 105,51 	" />
                             <polygon class="st0" points="78,33 15,33 24,15 87,15 	" />
                         </g>
-                    </svg>
+                    </svg> --}}
+                    <img src="{{asset('image/logo/logo-ipdn.png')}}" class="navbar-brand-img brand-md">
                 </a>
             </div>
 
