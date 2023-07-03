@@ -60,7 +60,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/account-manager', AccountManager::class)->name('account-manager');
 
     // Category Manager
-    Route::get('/kategori', CategoryManager::class)->name('category-manager');
+    Route::get('/category-manager', CategoryManager::class)->name('category-manager');
 
     // Daftar Postingan
     Route::get('/postingan', function () {
