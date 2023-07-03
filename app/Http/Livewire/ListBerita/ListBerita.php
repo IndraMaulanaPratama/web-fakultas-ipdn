@@ -8,13 +8,12 @@ use Livewire\Component;
 class ListBerita extends Component
 {
     public $berita;
-    public $countArticle = 8;
 
-    protected $count =  5;
+    public $countArticle = 8;
+    protected $count = 6;
 
     public function mount()
     {
-        $this->berita = article::take($this->countArticle)->nullDeleted()->get();
     }
 
     public function ShowMore()
@@ -24,6 +23,8 @@ class ListBerita extends Component
 
     public function render()
     {
+        $this->berita = article::with('user')->take($this->countArticle)->nullDeleted()->orderByDesc('ARTICLE_ID')->get();
+
         $params = [
             'title' => 'List Berita - IPDN Kampus Papua'
         ];
