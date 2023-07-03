@@ -8,14 +8,18 @@ use Livewire\Component;
 class ListBerita extends Component
 {
     public $berita;
-    public $countArticle;
+    public $countArticle = 8;
 
     protected $count =  5;
 
     public function mount()
     {
         $this->berita = article::take($this->countArticle)->nullDeleted()->get();
-        dd($this->berita);
+    }
+
+    public function ShowMore()
+    {
+        $this->countArticle += $this->count;
     }
 
     public function render()
