@@ -14,25 +14,26 @@
                     {{-- Instagram --}}
                     <div class="grid grid-flow-col text-slate-600 my-1 justify-start">
                         <x-feathericon-instagram class="w-6 m-1" />
-                        <p class="text-base p-1"> humas.ipdn</p>
+                        <p class="text-base p-1"><a href="https://instagram.com/{{ $data->CONTACT_INSTAGRAM }}"
+                                target="blank">humas ipdn</a></p>
                     </div>
 
                     {{-- Email --}}
                     <div class="grid grid-flow-col text-slate-600 my-1 justify-start">
                         <x-fontisto-email class="w-6 m-1" />
-                        <p class="text-base p-1">humas@ipdn.ac.id</p>
+                        <p class="text-base p-1">{{ $data->CONTACT_EMAIL }}@ipdn.ac.id</p>
                     </div>
 
                     {{-- Telepon --}}
                     <div class="grid grid-flow-col text-slate-600 my-1 justify-start">
                         <x-heroicon-o-phone-arrow-up-right class="w-6 m-1" />
-                        <p class="text-base p-1"><b>Tel:</b> (022) 7798252</p>
+                        <p class="text-base p-1"><b>Tel:</b> {{ $data->CONTACT_TELEPHONE }} </p>
                     </div>
 
                     {{-- Fax --}}
                     <div class="grid grid-flow-col text-slate-600 my-1 justify-start">
                         <x-feathericon-phone-call class="w-6 m-1" />
-                        <p class="text-base p-1"><b>Fax:</b> (021) 7798256</p>
+                        <p class="text-base p-1"><b>Fax:</b> {{ $data->CONTACT_FAX }} </p>
                     </div>
 
                     {{-- Lokasi --}}
@@ -40,8 +41,7 @@
                         <div class="p-1">
                             <x-akar-location class="w-6" />
                         </div>
-                        <p class="text-base lg:p-1 text-justify">Desa Sungai Purun Besar, Kec. Segedong, Kabupaten
-                            Mempawah, Kalimantan Barat 78351</p>
+                        <p class="text-base lg:p-1 text-justify"> {{ $data->CONTACT_ADDRESS }} </p>
                     </div>
                 </div>
 
@@ -49,8 +49,8 @@
 
                 <div class="max-lg:my-10">
                     <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3985.7976845237804!2d140.61999!3d-2.572438!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x686cf69703e72b53%3A0xf8b3581d422650f6!2sIPDN%20Kampus%20Papua!5e0!3m2!1sid!2sid!4v1678431817384!5m2!1sid!2sid"
-                        style="border:0;" class="md:w-[720px] md:h-[240px] lg:w-[960px] lg:h-[360px] rounded-md"
+                        src="{{ $data->CONTACT_MAPS }}"
+                        style="border:0;" class="sm:w-[480px] sm:h-[120px] md:w-[480px] md:h-[480px] rounded-md"
                         allowfullscreen="" referrerpolicy="no-referrer-when-downgrade">
                     </iframe>
                 </div>
