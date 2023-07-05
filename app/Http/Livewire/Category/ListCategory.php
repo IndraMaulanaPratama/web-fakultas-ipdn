@@ -8,8 +8,12 @@ use Livewire\Component;
 class ListCategory extends Component
 {
     public $category;
-
     protected $count = 3;
+
+    public function ShowMore()
+    {
+        $this->count += 3;
+    }
 
     public function render()
     {
