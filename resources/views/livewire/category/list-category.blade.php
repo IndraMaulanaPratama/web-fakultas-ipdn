@@ -41,8 +41,9 @@
 
     {{-- Loader --}}
     <div class="flex justify-center">
-        <button class="bg-accent p-4 rounded-btn font-light text-sm hover:bg-base-200 hover:font-medium">
-            Muat Lebih Banyak
+        <button class="bg-accent p-4 rounded-btn font-light text-sm hover:bg-base-200 hover:font-medium"
+            wire:click='ShowMore()'>
+            {{ __('Muat Lebih Banyak') }}
         </button>
     </div>
 
