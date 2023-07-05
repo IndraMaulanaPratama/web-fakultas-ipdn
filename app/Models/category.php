@@ -58,7 +58,7 @@ class category extends Model
         return $this->hasOne(User::class, 'id', 'CATEGORY_CREATED_BY');
     }
 
-    public function category(): HasMany
+    public function article(): HasMany
     {
         return $this->hasMany(article::class, 'ARTICLE_CATEGORY');
     }
