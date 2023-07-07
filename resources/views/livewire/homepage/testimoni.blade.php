@@ -19,14 +19,15 @@
                         <div class="card-actions justify-start items-center lg:flex lg:flex-row">
                             <div class="avatar max-lg:w-full max-lg:justify-center">
                                 <div class="max-lg:w-24 lg:w-36 rounded-full">
-                                    <img
-                                        src="https://kalbar.ipdn.ac.id/wp-content/uploads/2022/06/Senapati-scaled-e1654753812578-150x150.jpg" />
+                                    <img src="{{ asset('image/testimoni') . '/' . $item->TESTIMONI_IMAGE }}" />
                                 </div>
                             </div>
 
                             <div class="max-lg:text-center">
-                                <div class="font-semibold max-lg:text-sm lg:text-xl">{{ __($item->TESTIMONI_USERNAME) }},</div>
-                                <div class="max-lg:text-sm font-light"> {{ __('Senapati IPDN Kampus Kalbar Angkatan ') . $item->TESTIMONI_BATCH }} </div>
+                                <div class="font-semibold max-lg:text-sm lg:text-xl">
+                                    {{ __($item->TESTIMONI_USERNAME) }},</div>
+                                <div class="max-lg:text-sm font-light">
+                                    {{ __('Senapati IPDN Kampus Kalbar Angkatan ') . $item->TESTIMONI_BATCH }} </div>
                             </div>
                         </div>
                     </div>
