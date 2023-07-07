@@ -47,6 +47,9 @@
                                 <div class="form-group">
                                     <label for="inputName"> {{ __('Nama Praja:') }} </label>
                                     <input type="text" wire:model='inputName' class='form-control'>
+                                    @error('inputName')
+                                        <span class="error">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
 
@@ -56,14 +59,28 @@
                                     <label for="inputBatch"> {{ __('Angkatan:') }} </label>
                                     <input type="number" wire:model='inputBatch' min="1956"
                                         max="{{ date('Y') }}" class='form-control'>
+                                    @error('inputBatch')
+                                        <span class="error">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
 
                         {{-- Text Testimoni --}}
                         <div class="form-group">
-                            <label for="inputTestimoni"> {{ __('Testimoni') }} </label>
+                            <label for="inputTestimoni"> {{ __('Testimoni:') }} </label>
                             <textarea wire:model='inputTestimoni' rows="6" class='form-control'></textarea>
+                            @error('inputTestimoni')
+                                <span class="error">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputPhoto">{{ __('Foto Praja:') }}</label>
+                            <input type="file" class='form-control' wire:model='inputPhoto'>
+                            @error('inputPhoto')
+                                <span class="error">{{ $message }}</span>
+                            @enderror
                         </div>
 
                         <input type="hidden" wire:model='inputId' class='form-control'>
