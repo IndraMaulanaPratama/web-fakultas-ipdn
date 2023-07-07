@@ -95,6 +95,9 @@
 
                             <div class="col-md-9">
                                 <input type="file" wire:model='inputPhotoDirector' class='form-control file-input'>
+                                @error('inputPhotoDirector')
+                                    <span class="error">{{ $message }}</span>
+                                @enderror
                             </div>
 
                             <div class="col-md-3">
