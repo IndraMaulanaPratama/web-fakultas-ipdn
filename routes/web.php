@@ -3,6 +3,7 @@
 use App\Http\Livewire\Admin\AccountManager;
 use App\Http\Livewire\Admin\CategoryManager;
 use App\Http\Livewire\Admin\Dashboard;
+use App\Http\Livewire\Admin\Menu\Main;
 use App\Http\Livewire\Admin\Setting\Contact;
 use App\Http\Livewire\Admin\Setting\Content;
 use App\Http\Livewire\Admin\Setting\Testimoni;
@@ -75,6 +76,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     /*** END OF POST AREA */
 
     /** MENU AREA */
+    Route::get('/menu', Main::class)->name('menu-manager');
     /*** END OF MENU AREA */
 
 
