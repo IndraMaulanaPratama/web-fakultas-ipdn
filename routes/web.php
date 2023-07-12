@@ -59,34 +59,30 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     // Account Manager
     Route::get('/account-manager', AccountManager::class)->name('account-manager');
 
-    // Category Manager
-    Route::get('/category-manager', CategoryManager::class)->name('category-manager');
 
-    // Daftar Postingan
+    /*** POST AREA */
     Route::get('/postingan', function () {
         return view('livewire.admin.article-manager');
-    });
+    }); // Daftar Postingan
 
-    // Buat Postingan
     Route::get('/postingan/create', function () {
         return view('livewire.admin.post-article');
-    });
+    }); // Buat Postingan
 
-    // Edit Postingan
-    Route::get('/postingan/edit/{id}', EditArticle::class);
+    Route::get('/postingan/edit/{id}', EditArticle::class); // Edit Postingan
+    Route::get('/category-manager', CategoryManager::class)->name('category-manager'); // Category Manager
+    Route::get('/postingan/trash/', TrashData::class); // Trash Data Postingan & Category
+    /*** END OF POST AREA */
 
-    // Trash Data Postingan & Category
-    Route::get('/postingan/trash/', TrashData::class);
+    /** MENU AREA */
+    /*** END OF MENU AREA */
 
-    // General Setting
-    Route::get('/setting/general', Content::class);
 
-    // Testimoni Setting
-    Route::get('/setting/testimoni', Testimoni::class);
-
-    // Contact Setting
-    Route::get('/setting/contact', Contact::class);
-
+    /*** SETTING AREA */
+    Route::get('/setting/general', Content::class); // General Setting
+    Route::get('/setting/testimoni', Testimoni::class); // Testimoni Setting
+    Route::get('/setting/contact', Contact::class); // Contact Setting
+    /*** END OF SETTING AREA */
 });
 
 // Logout
