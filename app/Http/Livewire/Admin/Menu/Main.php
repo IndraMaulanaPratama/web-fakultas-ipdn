@@ -8,6 +8,13 @@ class Main extends Component
 {
     public function render()
     {
-        return view('livewire.admin.menu.main');
+        $params = [
+          'title' => 'Manajemen Menu | IPDN Kampus Deaerah',
+          'page_name' => 'Manajemen Menu'
+        ];
+
+        return view('livewire.admin.menu.main')
+        ->extends('layouts.admin', $params)
+        ->section('content');
     }
 }
