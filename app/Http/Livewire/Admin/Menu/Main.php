@@ -11,21 +11,10 @@ class Main extends Component
 
     public $formSetting = null;
 
-    protected $rules = [
-      'inputName' => ['required', 'max:20'],
-      'inputOrder' => ['required', 'digits_between:1,99'],
-      'inputUrl' => ['required', 'max:255'],
-      'inputIcon' => ['image'],
-    ];
-
     protected $listeners = [
       'close-form' => 'CloseForm',
+      'refresh-component' => '$refresh',
     ];
-
-    public function updated($variableName)
-    {
-        $this->validateOnly($variableName);
-    }
 
     public function ShowAddMenu()
     {
